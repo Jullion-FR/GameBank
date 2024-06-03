@@ -1,4 +1,4 @@
-package application.gamebank;
+package application.gamebank.results;
 
 public class ResultGame {
 	private Result[] results;

@@ -1,4 +1,4 @@
-package application.gamebank;
+package application.gamebank.api;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -9,6 +9,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
+import application.gamebank.results.Result;
+import application.gamebank.results.ResultGame;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

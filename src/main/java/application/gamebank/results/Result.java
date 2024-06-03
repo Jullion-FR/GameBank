@@ -1,4 +1,4 @@
-package application.gamebank;
+package application.gamebank.results;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

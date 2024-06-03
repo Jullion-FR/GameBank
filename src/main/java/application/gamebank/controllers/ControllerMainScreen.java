@@ -1,5 +1,6 @@
-package application.gamebank;
+package application.gamebank.controllers;
 
+import application.gamebank.api.APIManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
