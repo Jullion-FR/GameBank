@@ -33,6 +33,7 @@ public class AccueilController {
 
     @FXML
     void passerVueMosaique(MouseEvent event) {
+
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setPrefHeight(699.0);
         anchorPane.setPrefWidth(880.0);
@@ -43,30 +44,35 @@ public class AccueilController {
         gridPane.setLayoutY(12.0);
         gridPane.setPrefHeight(689.0);
         gridPane.setPrefWidth(823.0);
+        gridPane.setHgap(50);
+        gridPane.setVgap(10);
         anchorPane.getChildren().add(gridPane);
 
-        // Ajouter les jeux à la grille
         int column = 0;
         int row = 0;
         for (String jeu : liste) {
-            // Créer un nouveau Pane pour le jeu
-            Pane pane = new Pane();
-            pane.setPrefHeight(149.0);
-            pane.setPrefWidth(97.0);
-            pane.setStyle("-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;");
 
-            // Ajouter un Label au Pane avec le nom du jeu
+            double width = 97.0;
+            double height = 149.0;
+
+            Pane pane = new Pane();
+            pane.setPrefHeight(height);
+            pane.setPrefWidth(width);
+            pane.setMinHeight(height);
+            pane.setMinWidth(width);
+            pane.setMaxHeight(height);
+            pane.setMaxWidth(width);
+
+            pane.setStyle("-fx-background-color: #9A5ACCBF; -fx-background-radius: 7; -fx-padding: 10 50 10 50;");
+
             Label label = new Label(jeu);
             label.setLayoutX(71.0);
             label.setLayoutY(12.0);
             pane.getChildren().add(label);
 
-            // Ajouter le Pane au GridPane
             gridPane.add(pane, column, row);
 
-            // Passer à la colonne suivante
             column++;
-            // Si la colonne est 3, passer à la ligne suivante
             if (column == 3) {
                 column = 0;
                 row++;
