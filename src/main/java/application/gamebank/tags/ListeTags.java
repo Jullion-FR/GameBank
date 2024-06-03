@@ -6,27 +6,28 @@ import java.util.Comparator;
 import java.util.List;
 
 
-public class listeTags  {
+public class ListeTags {
 
-    private List<tag> liste = new ArrayList();
+    private List<Tag> liste = new ArrayList();
 
 
-    public listeTags(List<tag> liste) {
+    public ListeTags(List<Tag> liste) {
         this.liste = liste;
     }
 
-    public List<tag> getListe() {
+    public List<Tag> getListe() {
         return liste;
     }
 
-    public void setListe(List<tag> liste) {
+    public void setListe(List<Tag> liste) {
         this.liste = liste;
     }
     public void triAlpha(){
         liste.sort(Comparator.naturalOrder());
     }
-    public void addTag(tag tag) {
+    public void addTag(Tag tag) {
         this.liste.add(tag);
     }
+
 
 }
