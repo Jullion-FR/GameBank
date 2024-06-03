@@ -25,7 +25,7 @@ public class listeTags  {
     public void triAlpha(){
         liste.sort(Comparator.naturalOrder());
     }
-    public void addListe(tag tag) {
+    public void addTag(tag tag) {
         this.liste.add(tag);
     }
 
