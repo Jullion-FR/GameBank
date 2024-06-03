@@ -15,24 +15,24 @@ public class NouveauTagController {
     private final static int MAX_SIZE_TAG_NAME = 15;
 
     @FXML // Zone de texte pour définir le nom du tag
-    private TextField zoneTexteTag;
+    private TextField nom_du_tag;
 
     @FXML // Bouton de validation
-    private Pane validationButton;
+    private Pane bouton_de_validation;
 
     @FXML /** S'éxecute lors du chargement de cette fenêtre */
     void initialize() {
-        validationButton.setDisable(true);
+        bouton_de_validation.setDisable(true);
     }
 
     @FXML /** S'éxecute lors d'un clique sur le bouton valider*/
-    void BoutonValiderNouveauTag(MouseEvent event) {
+    void boutonValiderNouveauTag(MouseEvent event) {
         quit(((Pane) event.getSource()).getScene());
     }
 
     @FXML /** Mette a jour le fonctionnent du bouton de validation */
     void updateValidationButton(KeyEvent event) {
-        validationButton.setDisable(tagNameIsRight());
+        bouton_de_validation.setDisable(tagNameIsRight());
     }
 
     @FXML /** Executer lors de la validation (exemple avec entrer) */
@@ -52,12 +52,11 @@ public class NouveauTagController {
 
     /** Renvoie VRAI si le nom du tag est vide, sinon FAUX */
     private boolean tagNameEmpty() {
-        return zoneTexteTag.getText().isEmpty();
+        return nom_du_tag.getText().isEmpty();
     }
 
     /** Renvoie VRAI si le nom du tag est plus GRAND que le maximum, sinon FAUX */
     private boolean tagNameOversize() {
-        return zoneTexteTag.getText().length() > MAX_SIZE_TAG_NAME;
+        return nom_du_tag.getText().length() > MAX_SIZE_TAG_NAME;
     }
-
 }
