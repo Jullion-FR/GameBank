@@ -7,13 +7,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-//test
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/MainScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/nouveauTag.fxml"));
             Parent root = loader.load();
-            Scene scene = new Scene(root, 800, 600);
+            Scene scene = new Scene(root);
             primaryStage.setResizable(false);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -21,9 +25,4 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
 }

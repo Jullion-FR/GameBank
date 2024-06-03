@@ -9,7 +9,7 @@ module application.gamebank {
     opens application.gamebank to javafx.fxml, com.fasterxml.jackson.databind;
     exports application.gamebank;
     exports application.gamebank.controllers;
-    opens application.gamebank.images.controllers to com.fasterxml.jackson.databind, javafx.fxml;
+    opens application.gamebank.controllers to com.fasterxml.jackson.databind, javafx.fxml;
     exports application.gamebank.api;
     opens application.gamebank.api to com.fasterxml.jackson.databind, javafx.fxml;
     exports application.gamebank.results;
