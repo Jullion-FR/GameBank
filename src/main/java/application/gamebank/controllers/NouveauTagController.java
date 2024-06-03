@@ -1,4 +1,4 @@
-package application.gamebank;
+package application.gamebank.controllers;
 
 
 import javafx.fxml.FXML;

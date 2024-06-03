@@ -1,4 +1,4 @@
-package application.gamebank;
+package application.gamebank.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
