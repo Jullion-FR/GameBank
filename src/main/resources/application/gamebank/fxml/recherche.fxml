@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="501.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae201.RechercheController">
+<AnchorPane prefHeight="501.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.gamebank.controllers.RechercheController">
    <children>
       <AnchorPane layoutY="-1.0" prefHeight="501.0" prefWidth="826.0">
          <children>
