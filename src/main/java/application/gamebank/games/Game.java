@@ -10,8 +10,15 @@ public class Game implements Comparator<Game>, Serializable {
 	private String imageURL;
 
 	public Game() {
+		this("");
+	}
+	Game(String name) {
+		this(name,null);
+	}
+    public Game(String name, String imageURL) {
 		super();
-		this.name = "";
+		this.name = name;
+		this.imageURL = imageURL;
 	}
 	
 	public String getName() {
