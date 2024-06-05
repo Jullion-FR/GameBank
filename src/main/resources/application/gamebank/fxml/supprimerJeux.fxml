@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.gamebank.controllers.SupprimerJeuxController">
    <children>
-      <Label fx:id="LabelNomJeuSupression" layoutX="256.0" layoutY="35.0" text="Nom du jeu :">
+      <Label fx:id="game_name" layoutX="256.0" layoutY="35.0" text="Nom du jeu :">
          <font>
             <Font size="24.0" />
          </font>
@@ -22,7 +22,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Pane layoutX="60.0" layoutY="244.0" onMouseClicked="#ActionValider" prefHeight="65.0" prefWidth="180.0" style="-fx-background-color: #9A5ACCBF; -fx-border-color: BLACK; -fx-border-radius: 7; -fx-background-radius: 7;">
+      <Pane layoutX="60.0" layoutY="244.0" onMouseClicked="#onCancelAction" prefHeight="65.0" prefWidth="180.0" style="-fx-background-color: #9A5ACCBF; -fx-border-color: BLACK; -fx-border-radius: 7; -fx-background-radius: 7;">
          <children>
             <Label layoutX="51.0" layoutY="18.0" text="Annuler">
                <font>
@@ -30,7 +30,7 @@
                </font>
             </Label>
          </children></Pane>
-      <Pane fx:id="BoutonValiderSupressionJeu" layoutX="379.0" layoutY="243.0" onMouseClicked="#ActionValider" prefHeight="65.0" prefWidth="180.0" style="-fx-background-color: #9A5ACCBF; -fx-border-color: BLACK; -fx-border-radius: 7; -fx-background-radius: 7;">
+      <Pane layoutX="379.0" layoutY="243.0" onMouseClicked="#onValideAction" prefHeight="65.0" prefWidth="180.0" style="-fx-background-color: #9A5ACCBF; -fx-border-color: BLACK; -fx-border-radius: 7; -fx-background-radius: 7;">
          <children>
             <Label layoutX="55.0" layoutY="17.0" text="Valider">
                <font>
