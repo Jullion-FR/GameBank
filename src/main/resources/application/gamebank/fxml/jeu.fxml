@@ -21,6 +21,35 @@
          </children>
       </AnchorPane>
       <AnchorPane layoutX="-4.0" layoutY="-1.0" prefHeight="492.0" prefWidth="966.0" style="-fx-background-color: black;" />
-      <AnchorPane layoutX="963.0" layoutY="-3.0" prefHeight="723.0" prefWidth="318.0" />
+      <AnchorPane layoutX="960.0" layoutY="11.0" prefHeight="732.0" prefWidth="318.0">
+         <children>
+            <AnchorPane layoutX="28.0" layoutY="644.0" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+               <children>
+                  <Label fx:id="boutonSupJeu" layoutX="48.0" text="Suprimer le jeu" textFill="WHITE">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="28.0" layoutY="597.0" opacity="0.84" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+               <children>
+                  <Label fx:id="boutonAjoutTag" layoutX="54.0" layoutY="-1.0" text="Ajouter un Tag" textFill="WHITE">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="boutonSupTag" layoutX="28.0" layoutY="550.0" opacity="0.6" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+               <children>
+                  <Label layoutX="43.0" layoutY="-1.0" text="Suprimer un Tag" textFill="WHITE">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
    </children>
 </AnchorPane>

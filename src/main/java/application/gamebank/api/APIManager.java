@@ -9,6 +9,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
+import application.gamebank.games.Game;
+import application.gamebank.games.MyGames;
 import application.gamebank.results.Result;
 import application.gamebank.results.ResultGame;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,7 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class APIManager {
 
-    public void setInformations(String searchedText)  {
+    public void setInformations(MyGames games, String searchedText, int wanted)  throws GameNotFoundException{
 
         String searchedEncoded = "";
         try {
@@ -37,7 +39,7 @@ public class APIManager {
                         + "?key=41a5c4ca050840b18caf582c213f33a5"
                         + "&search=" + searchedEncoded
                         + "&search_exact=1"
-                        + "&page_size=1"))
+                        + "&page_size="+wanted))
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
         HttpResponse<String> response = null;
@@ -57,8 +59,13 @@ public class APIManager {
             if (result.getResults().length == 0) {
                 throw new GameNotFoundException();
             }
-            Result firstResult = result.getResults()[0];
-            System.out.println(firstResult.getBackgroundImage());
+
+            for (int i = 0; i < wanted ; i++) {
+                try {
+                    Result gameResult = result.getResults()[i];
+                    games.addGame(new Game(gameResult.getName(), gameResult.getBackgroundImage()));
+                }catch(Exception e){}
+            }
 
         } catch (JsonProcessingException | GameNotFoundException e) {
             e.printStackTrace();
