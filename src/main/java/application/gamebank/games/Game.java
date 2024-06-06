@@ -7,7 +7,11 @@ import java.util.Comparator;
 public class Game implements Comparator<Game>, Serializable {
 
 	private String name;
+
+
+
 	private String imageURL;
+//	private String description;
 
 	public Game() {
 		this("");
@@ -37,6 +41,9 @@ public class Game implements Comparator<Game>, Serializable {
 		this.imageURL = imageURL;
 	}
 
+//	public String getDescription() {
+//		return description;
+//	}
 	@Override
     public String toString() {
         return name;
