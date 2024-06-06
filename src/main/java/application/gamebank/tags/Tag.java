@@ -8,7 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-public class Tag implements Comparable<Tag>{
+public class Tag implements Comparable<Tag> {
 
     private String nom;
 
@@ -16,16 +16,6 @@ public class Tag implements Comparable<Tag>{
         this.nom = nom;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-    public int compareTo(Tag other) {
-        return this.nom.compareTo(other.nom);
-    }
     public static AnchorPane createTagPane(Tag tag) {
         // Create AnchorPane
         AnchorPane anchorPane = new AnchorPane();
@@ -57,8 +47,17 @@ public class Tag implements Comparable<Tag>{
         return anchorPane;
     }
 
+    public String getNom() {
+        return nom;
+    }
 
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
+    public int compareTo(Tag other) {
+        return this.nom.compareTo(other.nom);
+    }
 
 
 }

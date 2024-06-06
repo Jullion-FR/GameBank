@@ -1,9 +1,17 @@
 package application.gamebank.controllers;
 
+import application.gamebank.Main;
+import application.gamebank.games.Game;
+import application.gamebank.games.MyGames;
+import application.gamebank.persistence.PersistenceBySerialization;
+import application.gamebank.persistence.PersistenceModele;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import javafx.scene.control.Label;
@@ -11,10 +19,20 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.ScrollPane;
-
-
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class AccueilController {
+
+    private MyGames games;
+    private final PersistenceModele persistence = new PersistenceBySerialization();
+
+    @FXML
+    void initialize() {
+        games = persistence.load();
+        // Chargement des données persistantes
+    }
 
     List<String> liste = Arrays.asList("Super Mario Bros.", "The " +
                     "Legend of Zelda", "Minecraft", "Fortnite", "Call of Duty",
@@ -81,5 +99,21 @@ public class AccueilController {
 
         // Définir le nouvel AnchorPane comme le contenu du ScrollPane
         scrollPane.setContent(anchorPane);
+    }
+
+    @FXML
+    void onAddTag(MouseEvent event) throws IOException {
+        Stage stage = new Stage(StageStyle.UTILITY);
+        stage.setResizable(false);
+        FXMLLoader root = new FXMLLoader(Main.class.getResource("fxml/nouveauTag.fxml"));
+        stage.setScene(new Scene(root.load()));
+        stage.setTitle("Default title");
+        stage.initModality(Modality.WINDOW_MODAL);
+
+        stage.initOwner(((AnchorPane) event.getSource()).getScene().getWindow());
+        stage.showAndWait();
+
+        Parent p = new FXMLLoader(Main.class.getResource("fxml/test.fxml")).load();
+        ((AnchorPane) event.getSource()).getChildren().add(p);
     }
 }
