@@ -1,5 +1,7 @@
 package application.gamebank.games;
 
+import javafx.scene.image.Image;
+
 import java.io.Serializable;
 import java.util.Comparator;
 
@@ -8,6 +10,7 @@ public class Game implements Comparator<Game>, Serializable {
 
 	private String name;
 	private String imageURL;
+	private Image image;
 
 	public Game() {
 		this("");
@@ -19,6 +22,7 @@ public class Game implements Comparator<Game>, Serializable {
 		super();
 		this.name = name;
 		this.imageURL = imageURL;
+		this.image = new Image(imageURL);
 	}
 	
 	public String getName() {
@@ -35,6 +39,15 @@ public class Game implements Comparator<Game>, Serializable {
 
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
+		this.image = new Image(imageURL);
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
 	}
 
 	@Override
