@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -8,19 +9,22 @@
    <children>
       <AnchorPane layoutX="-3.0" layoutY="491.0" prefHeight="229.0" prefWidth="966.0">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" prefHeight="74.0" prefWidth="288.0" text="nom">
+            <Label fx:id="nom" layoutX="14.0" layoutY="14.0" prefHeight="74.0" prefWidth="288.0" text="nom">
                <font>
                   <Font size="40.0" />
                </font>
             </Label>
-            <Label alignment="TOP_LEFT" layoutX="19.0" layoutY="80.0" prefHeight="126.0" prefWidth="813.0" text="description" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="description" alignment="TOP_LEFT" layoutX="19.0" layoutY="80.0" prefHeight="126.0" prefWidth="813.0" text="description" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="-4.0" layoutY="-1.0" prefHeight="492.0" prefWidth="966.0" style="-fx-background-color: black;" />
+      <AnchorPane layoutX="-4.0" layoutY="-1.0" prefHeight="492.0" prefWidth="966.0" style="-fx-background-color: black;">
+         <children>
+            <ImageView fx:id="image" fitHeight="492.0" fitWidth="966.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
+         </children></AnchorPane>
       <AnchorPane layoutX="960.0" layoutY="11.0" prefHeight="732.0" prefWidth="318.0">
          <children>
             <AnchorPane layoutX="28.0" layoutY="644.0" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
