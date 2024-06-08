@@ -1,85 +1,59 @@
 package application.gamebank.controllers;
 
+import application.gamebank.Main;
+import application.gamebank.games.Game;
+import application.gamebank.games.MyGames;
+import application.gamebank.vue.GameGrid;
+import application.gamebank.vue.Vue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 
-
-public class AccueilController extends CanOpenGameDetails {
-
-    List<String> liste = Arrays.asList("Super Mario Bros.", "The " +
-                    "Legend of Zelda", "Minecraft", "Fortnite", "Call of Duty",
-            "World of Warcraft", "Among Us", "Assassin's Creed", "Borderlands",
-            "Civilization", "Dark Souls", "Elder Scrolls", "Fallout",
-            "Grand Theft Auto", "Halo", "Infamous", "Just Cause",
-            "Zelda: Breath of the Wild");
+public class AccueilController extends gameViewer {
 
     @FXML
-    private ScrollPane scrollPane;
+    public void initialize() {
+        //todo chargement sauvergarde
+        fillView();
+    }
 
-    @FXML
-    void passerVueListe(MouseEvent event) {
-
+    @Override
+    public JeuController openGameDetails(MouseEvent event) {
+        JeuController control = super.openGameDetails(event);
+        control.activateDropGamePane();
+        control.activateAddTagPane();
+        //if(games.getAllGames().get(Integer.parseInt(((Node) event.getSource()).getId())))
+        //todo voir si le jeu a au moins un tag
+        control.activateDropTagPane();
+        return control;
     }
 
     @FXML
-    void passerVueMosaique(MouseEvent event) {
-
-        AnchorPane anchorPane = new AnchorPane();
-        anchorPane.setPrefHeight(699.0);
-        anchorPane.setPrefWidth(880.0);
-
-        // Créer un nouveau GridPane et l'ajouter à l'AnchorPane
-        GridPane gridPane = new GridPane();
-        gridPane.setLayoutX(27.0);
-        gridPane.setLayoutY(12.0);
-        gridPane.setPrefHeight(689.0);
-        gridPane.setPrefWidth(823.0);
-        gridPane.setHgap(50);
-        gridPane.setVgap(10);
-        anchorPane.getChildren().add(gridPane);
-
-        int column = 0;
-        int row = 0;
-        for (String jeu : liste) {
-
-            double width = 97.0;
-            double height = 149.0;
-
-            Pane pane = new Pane();
-            pane.setPrefHeight(height);
-            pane.setPrefWidth(width);
-            pane.setMinHeight(height);
-            pane.setMinWidth(width);
-            pane.setMaxHeight(height);
-            pane.setMaxWidth(width);
-
-            pane.setStyle("-fx-background-color: #9A5ACCBF; -fx-background-radius: 7; -fx-padding: 10 50 10 50;");
-
-            Label label = new Label(jeu);
-            label.setLayoutX(71.0);
-            label.setLayoutY(12.0);
-            pane.getChildren().add(label);
-
-            gridPane.add(pane, column, row);
-
-            column++;
-            if (column == 3) {
-                column = 0;
-                row++;
-            }
+    RechercheController startResearch(MouseEvent event) {
+        try {
+            Node source = (Node) event.getSource();
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/recherche.fxml"));
+            Scene scene = new Scene(loader.load());
+            RechercheController control = loader.getController();
+            control.setScene(scene);
+            control.setLastScene(thisScene);
+            ((Stage) thisScene.getWindow()).setScene(scene);
+            return control;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        // Définir le nouvel AnchorPane comme le contenu du ScrollPane
-        scrollPane.setContent(anchorPane);
+        return null;
     }
 }

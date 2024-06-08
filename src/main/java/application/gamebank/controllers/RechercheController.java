@@ -1,16 +1,13 @@
 package application.gamebank.controllers;
 
-import application.gamebank.Main;
 import application.gamebank.api.APIManager;
 import application.gamebank.api.GameNotFoundException;
-import application.gamebank.games.Game;
 import application.gamebank.games.MyGames;
 import application.gamebank.vue.GameGrid;
 import application.gamebank.vue.Vue;
 import application.gamebank.vue.VueListe;
 import application.gamebank.vue.VueMosaique;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -19,31 +16,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class RechercheController extends CanOpenGameDetails {
+public class RechercheController extends gameViewer {
 
-    private Vue vueActuelle;
-    @FXML
-    private ScrollPane scrollPane;
     @FXML
     private TextField entry;
-    @FXML
-    private ImageView validateImageView;
 
-    @FXML
-    private ImageView pictureImageView;
     private APIManager apiManager;
-    private GameGrid gameGrid;
-
-
+    private Scene lastScene;
     @FXML
     public void initialize(){
-        games = new MyGames();
         apiManager = new APIManager();
-        gameGrid = new GameGrid();
-        vueActuelle = gameGrid.getVue();
     }
     @FXML
     public void onAction() {
@@ -64,28 +48,8 @@ public class RechercheController extends CanOpenGameDetails {
             e.printStackTrace();
         }
 
-
-        gameGrid.resetGrid();
-        gameGrid.fill(games, maxGridWidth);
-        gameGrid.applyPadding(10);
-
-        scrollPane.setContent(gameGrid.getGrid());
-
-        for (Node node : gameGrid.getGrid().getChildren()) {
-            node.setOnMouseClicked(this::openGameDetails);
-        }
-
-
+        fillView();
         System.out.println("Done.");
-    }
-    @FXML
-    public void switchView(){
-        if (vueActuelle instanceof VueMosaique) {
-            vueActuelle = VueListe.VUE_LISTE;
-        } else {
-            vueActuelle = VueMosaique.VUE_MOSAIQUE;
-        }
-        gameGrid.setVue(vueActuelle);
     }
 
     @Override
@@ -93,6 +57,13 @@ public class RechercheController extends CanOpenGameDetails {
         JeuController control = super.openGameDetails(event);
         control.activateAddGamePane();
         return control;
+    }
+    @FXML
+    void backToLastWindow(MouseEvent event) {
+        ((Stage) thisScene.getWindow()).setScene(lastScene);
+    }
+    public void setLastScene(Scene scene) {
+        this.lastScene = scene;
     }
 
 }

@@ -27,7 +27,7 @@
          </children></AnchorPane>
       <AnchorPane layoutX="962.0" prefHeight="738.0" prefWidth="318.0">
          <children>
-            <AnchorPane fx:id="dropGamePane" disable="true" layoutX="28.0" layoutY="610.0" onMouseClicked="#removeGameFromLibrary" opacity="0.95" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane fx:id="dropGamePane" disable="true" layoutX="28.0" layoutY="610.0" onMouseClicked="#removeGameFromLibrary" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
                <children>
                   <Label layoutX="49.0" layoutY="1.0" text="Suprimer le jeu">
                      <font>
@@ -36,7 +36,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="addTagPane" disable="true" layoutX="28.0" layoutY="562.0" onMouseClicked="#addTagToGame" opacity="0.9" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane fx:id="addTagPane" disable="true" layoutX="28.0" layoutY="562.0" onMouseClicked="#addTagToGame" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
                <children>
                   <Label layoutX="50.0" layoutY="1.0" text="Ajouter un Tag">
                      <font>
@@ -45,7 +45,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="dropTagPane" disable="true" layoutX="28.0" layoutY="515.0" opacity="0.85" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane fx:id="dropTagPane" disable="true" layoutX="28.0" layoutY="515.0" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
                <children>
                   <Label layoutX="40.0" layoutY="1.0" onMouseClicked="#removeTagFromGame" text="Suprimer un Tag">
                      <font>
@@ -54,7 +54,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="addGamePane" focusTraversable="true" layoutX="28.0" layoutY="469.0" onMouseClicked="#addGameToLibrary" opacity="0.8" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane fx:id="addGamePane" disable="true" focusTraversable="true" layoutX="28.0" layoutY="469.0" onMouseClicked="#addGameToLibrary" prefHeight="40.0" prefWidth="270.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
                <children>
                   <Label layoutX="58.0" layoutY="1.0" text="Ajouter le jeu">
                      <font>
