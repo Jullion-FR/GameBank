@@ -8,10 +8,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class GridElement {
+
     private final Pane element;
     private ImageView gameImageHolder;
     private Label nameHolder;
 
+    /** Constructeur de la classe GridElement */
     public GridElement(Pane element) {
         this.element = element;
     }
@@ -20,11 +22,14 @@ public class GridElement {
         return element;
     }
 
+    /** Ajoute un nouvel éléments à un certain index dans la grille */
     public void add(Node node, int index) {
         element.getChildren().add(index, node);
     }
 
+    /** Ajoute un nouvel élément dans la grille */
     public void add(Node node) {
+//        add(node, element.getChildren().size()-1);
         element.getChildren().add(node);
     }
 
@@ -59,6 +64,11 @@ public class GridElement {
         return gameImageHolder;
     }
 
+    public void setGameImageHolder(ImageView gameImageHolder) {
+        this.gameImageHolder = gameImageHolder;
+        add(gameImageHolder);
+    }
+
     public Label getNameHolder() {
         return nameHolder;
     }
@@ -73,10 +83,6 @@ public class GridElement {
         add(nameHolder, index);
     }
 
-    public void setGameImageHolder(ImageView gameImageHolder) {
-        this.gameImageHolder = gameImageHolder;
-        add(gameImageHolder);
-    }
     public void setLogoHolder(ImageView logoHolder, int index) {
         this.gameImageHolder = logoHolder;
         add(logoHolder, index);

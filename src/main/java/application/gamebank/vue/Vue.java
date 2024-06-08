@@ -5,7 +5,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 public abstract class Vue {
+
     protected GridElement gridElement;
+
     abstract  void createGridElement();
 
     public GridElement getGridElement() {
@@ -13,7 +15,9 @@ public abstract class Vue {
     }
 
     abstract void formatGameImageView(ImageView imageView);
+
     abstract void formatRoot(Pane root) ;
+
     abstract  void formatNameLabel(Label nameLabel);
 
 }

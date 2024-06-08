@@ -7,26 +7,37 @@ import application.gamebank.persistence.PersistenceBySerialization;
 import application.gamebank.persistence.PersistenceModele;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
 public class AccueilController {
 
-    private MyGames games;
     private final PersistenceModele persistence = new PersistenceBySerialization();
+    List<String> liste = Arrays.asList("Super Mario Bros.", "The " +
+                    "Legend of Zelda", "Minecraft", "Fortnite", "Call of Duty",
+            "World of Warcraft", "Among Us", "Assassin's Creed", "Borderlands",
+            "Civilization", "Dark Souls", "Elder Scrolls", "Fallout",
+            "Grand Theft Auto", "Halo");
+    @FXML
+    private GridPane gamesInGrid;
+    @FXML
+    private VBox gamesInListe;
+    private MyGames games;
+    @FXML
+    private ScrollPane scrollPane;
 
     @FXML
     void initialize() {
@@ -34,23 +45,40 @@ public class AccueilController {
         // Chargement des données persistantes
     }
 
-    List<String> liste = Arrays.asList("Super Mario Bros.", "The " +
-                    "Legend of Zelda", "Minecraft", "Fortnite", "Call of Duty",
-            "World of Warcraft", "Among Us", "Assassin's Creed", "Borderlands",
-            "Civilization", "Dark Souls", "Elder Scrolls", "Fallout",
-            "Grand Theft Auto", "Halo", "Infamous", "Just Cause",
-            "Zelda: Breath of the Wild");
-
-    @FXML
-    private ScrollPane scrollPane;
+    void toogleVisibility() {
+        gamesInGrid.setVisible(!gamesInGrid.isVisible());
+        gamesInListe.setVisible(!gamesInListe.isVisible());
+    }
 
     @FXML
     void passerVueListe(MouseEvent event) {
+        toogleVisibility();
+    }
 
+    Pane makePane(Game game) {
+        double width = 97.0;
+        double height = 149.0;
+
+        Pane pane = new Pane();
+        pane.setPrefHeight(height);
+        pane.setPrefWidth(width);
+        pane.setMinHeight(height);
+        pane.setMinWidth(width);
+        pane.setMaxHeight(height);
+        pane.setMaxWidth(width);
+
+        pane.setStyle("-fx-background-color: #9A5ACCBF; -fx-background-radius: 7; -fx-padding: 10 50 10 50;");
+
+        Label label = new Label(game.getName());
+        label.setLayoutX(71.0);
+        label.setLayoutY(12.0);
+        pane.getChildren().add(label);
+        return pane;
     }
 
     @FXML
     void passerVueMosaique(MouseEvent event) {
+        toogleVisibility();
 
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setPrefHeight(699.0);
@@ -68,27 +96,10 @@ public class AccueilController {
 
         int column = 0;
         int row = 0;
+
         for (String jeu : liste) {
 
-            double width = 97.0;
-            double height = 149.0;
-
-            Pane pane = new Pane();
-            pane.setPrefHeight(height);
-            pane.setPrefWidth(width);
-            pane.setMinHeight(height);
-            pane.setMinWidth(width);
-            pane.setMaxHeight(height);
-            pane.setMaxWidth(width);
-
-            pane.setStyle("-fx-background-color: #9A5ACCBF; -fx-background-radius: 7; -fx-padding: 10 50 10 50;");
-
-            Label label = new Label(jeu);
-            label.setLayoutX(71.0);
-            label.setLayoutY(12.0);
-            pane.getChildren().add(label);
-
-            gridPane.add(pane, column, row);
+            gridPane.add(makePane(new Game()), column, row);
 
             column++;
             if (column == 3) {
@@ -113,7 +124,11 @@ public class AccueilController {
         stage.initOwner(((AnchorPane) event.getSource()).getScene().getWindow());
         stage.showAndWait();
 
-        Parent p = new FXMLLoader(Main.class.getResource("fxml/test.fxml")).load();
-        ((AnchorPane) event.getSource()).getChildren().add(p);
+        ((AnchorPane) event.getSource()).getChildren().add(new FXMLLoader(Main.class.getResource("fxml/test.fxml")).load());
+    }
+
+    @FXML
+    void onAddGame(MouseEvent event) {
+
     }
 }

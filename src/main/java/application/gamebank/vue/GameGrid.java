@@ -10,6 +10,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
+import java.net.URL;
+
 public class GameGrid {
 //    public static Vue VUE_MOSAIQUE = new VueMosaique();
 //    public static Vue VUE_LISTE = new VueListe();
@@ -40,7 +42,7 @@ public class GameGrid {
             GridElement element = vue.getGridElement().clone();
 
             String name = game.getName();
-            Image img = game.getImage();
+            String img = game.getImageURL();
 
             //Game name
             Label nameHolder = element.getNameHolder();
@@ -49,7 +51,7 @@ public class GameGrid {
 
             //Game image
             ImageView logoHolder = element.getGameImageHolder();
-            logoHolder.setImage(img);
+            logoHolder.setImage(new Image(img));
             vue.formatGameImageView(logoHolder);
 
             //Other Specific  Formating
