@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class AccueilController {
+public class AccueilController extends CanOpenGameDetails {
 
     private final PersistenceModele persistence = new PersistenceBySerialization();
     List<String> liste = Arrays.asList("Super Mario Bros.", "The " +

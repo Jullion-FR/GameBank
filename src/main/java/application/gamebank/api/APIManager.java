@@ -1,5 +1,14 @@
 package application.gamebank.api;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URLEncoder;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+
 import application.gamebank.games.Game;
 import application.gamebank.games.MyGames;
 import application.gamebank.results.Result;
@@ -8,32 +17,37 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URLEncoder;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
-import java.util.LinkedList;
-import java.util.List;
+//import application.model.Game;
+//import application.pojo.Result;
+//import application.pojo.ResultGame;
+
 
 public class APIManager {
 
-    public void setInformations(MyGames games, String searchedText, int wanted) throws GameNotFoundException {
-
+    public MyGames setInformations( String searchedText, int wanted)  throws GameNotFoundException{
+        MyGames games = new MyGames();
         String searchedEncoded = "";
-        searchedEncoded = URLEncoder.encode(searchedText, StandardCharsets.UTF_8);
+        try {
+            searchedEncoded = URLEncoder.encode(searchedText, StandardCharsets.UTF_8.toString());
+        } catch (UnsupportedEncodingException e2) {
+            e2.printStackTrace();
+        }
 
         HttpRequest request = HttpRequest.newBuilder()
                 //  https://rawg-video-games-database.p.rapidapi.com/games
-                .uri(URI.create("https://api.rawg.io/api/games" + "?key=41a5c4ca050840b18caf582c213f33a5" + "&search=" + searchedEncoded + "&search_exact=1" + "&page_size=" + wanted)).method("GET", HttpRequest.BodyPublishers.noBody()).build();
+                .uri(URI.create("https://api.rawg.io/api/games"
+                        + "?key=41a5c4ca050840b18caf582c213f33a5"
+                        + "&search=" + searchedEncoded
+                        + "&search_exact=1"
+                        + "&page_size="+wanted))
+                .method("GET", HttpRequest.BodyPublishers.noBody())
+                .build();
         HttpResponse<String> response = null;
         try {
             response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (InterruptedException | IOException e) {
+        } catch (InterruptedException|IOException e) {
             Thread.currentThread().interrupt();
-            return;
+            return null;
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -46,22 +60,17 @@ public class APIManager {
                 throw new GameNotFoundException();
             }
 
-            for (int i = 0; i < wanted; i++) {
+            for (int i = 0; i < wanted ; i++) {
                 try {
                     Result gameResult = result.getResults()[i];
-                    // games.addGame(new Game(gameResult.getName(), gameResult.getBackgroundImage()));
-                } catch (Exception e) {
-                }
+                    games.addGame(new Game(gameResult.getName(), gameResult.getBackgroundImage()));
+                }catch(Exception e){}
             }
 
-        } catch (JsonProcessingException | GameNotFoundException e) {
+        } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-    }
-
-    /** Renvoie la liste des jeux trouver */
-    public static List<Game> searchQuery(String request) {
-        return new LinkedList<>();
+        return games;
     }
 
 }

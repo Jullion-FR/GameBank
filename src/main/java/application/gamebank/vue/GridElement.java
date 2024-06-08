@@ -7,66 +7,85 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class GridElement {
+import java.util.ArrayList;
+import java.util.List;
 
-    private final Pane element;
+public class GridElement {
+    private final Pane root;
     private ImageView gameImageHolder;
     private Label nameHolder;
 
-    /** Constructeur de la classe GridElement */
     public GridElement(Pane element) {
-        this.element = element;
+        this.root = element;
     }
 
     public Pane getRoot() {
-        return element;
+        return root;
     }
 
-    /** Ajoute un nouvel éléments à un certain index dans la grille */
     public void add(Node node, int index) {
-        element.getChildren().add(index, node);
+        root.getChildren().add(index, node);
     }
 
-    /** Ajoute un nouvel élément dans la grille */
     public void add(Node node) {
-//        add(node, element.getChildren().size()-1);
-        element.getChildren().add(node);
+        add(node, root.getChildren().size());
     }
 
     // méthode pour cloner l'objet
     public GridElement clone() {
+        try {
+            GridElement clone = (GridElement) super.clone();
+        } catch (CloneNotSupportedException sonarlintEstContent) {
+            //
+        }
+
         Pane newPane;
-        if (this.element instanceof VBox) {
+        if (this.root instanceof VBox) {
             newPane = new VBox();
-        } else if (this.element instanceof HBox) {
+        } else if (this.root instanceof HBox) {
             newPane = new HBox();
         } else {
             newPane = new Pane(); // Pour tout autre type de Pane
         }
 
         GridElement clonedElement = new GridElement(newPane);
-
-        // Initialiser logoHolder et nameHolder dans le clone, mais ne pas ajouter d'éléments enfants existants
-        if (this.gameImageHolder != null) {
-            ImageView clonedLogoHolder = new ImageView(this.gameImageHolder.getImage());
-            clonedElement.setGameImageHolder(clonedLogoHolder);
+        // Cloner tous les enfants
+        for (Node node : this.root.getChildren()) {
+            //Noeuds speciaux
+            if (node.equals(this.gameImageHolder)) {
+                ImageView clonedGameImageHolder = new ImageView(this.gameImageHolder.getImage());
+                clonedElement.addGameImageHolder(clonedGameImageHolder);
+            }
+            else if (node.equals(this.nameHolder)) {
+                Label clonedNameHolder = new Label(this.nameHolder.getText());
+                clonedElement.addNameHolder(clonedNameHolder);
+            }
+            //Noeuds basiques
+            else {
+                clonedElement.add(cloneNode(node));
+            }
         }
 
-        if (this.nameHolder != null) {
-            Label clonedNameHolder = new Label(this.nameHolder.getText());
-            clonedElement.setNameHolder(clonedNameHolder);
-        }
+
+
 
         return clonedElement;
     }
 
-    public ImageView getGameImageHolder() {
-        return gameImageHolder;
+    private Node cloneNode(Node node) {
+        if (node instanceof ImageView originalImageView) {
+            return new ImageView(originalImageView.getImage());
+        } else if (node instanceof Label originalLabel) {
+            return new Label(originalLabel.getText());
+        } else {
+            // Pour d'autres types de nœuds, vous devez gérer chaque type individuellement
+            // ou lancer une exception si vous ne souhaitez pas cloner ces types
+            throw new UnsupportedOperationException("Cloning for this type of node is not supported");
+        }
     }
 
-    public void setGameImageHolder(ImageView gameImageHolder) {
-        this.gameImageHolder = gameImageHolder;
-        add(gameImageHolder);
+    public ImageView getGameImageHolder() {
+        return gameImageHolder;
     }
 
     public Label getNameHolder() {
@@ -74,17 +93,37 @@ public class GridElement {
     }
 
     public void setNameHolder(Label nameHolder) {
-        this.nameHolder = nameHolder;
-        add(nameHolder);
+        if (this.nameHolder != null) {
+            root.getChildren().set(root.getChildren().indexOf(this.nameHolder), nameHolder);
+            this.nameHolder = nameHolder;
+        }else {
+            throw new UnsupportedOperationException("Special Item not initialized");
+        }
+
     }
 
-    public void setNameHolder(Label nameHolder, int index) {
-        this.nameHolder = nameHolder;
-        add(nameHolder, index);
+    public void setGameImageHolder(ImageView gameImageHolder) {
+        if (this.gameImageHolder != null) {
+            root.getChildren().set(root.getChildren().indexOf(this.gameImageHolder), gameImageHolder);
+            this.gameImageHolder = gameImageHolder;
+        }else {
+            throw new UnsupportedOperationException("Special Item not initialized");
+        }
     }
-
-    public void setLogoHolder(ImageView logoHolder, int index) {
-        this.gameImageHolder = logoHolder;
-        add(logoHolder, index);
+    public void addNameHolder(Label nameHolder) {
+        if (this.nameHolder == null) {
+            this.nameHolder = nameHolder;
+            add(nameHolder);
+        }else {
+            throw new UnsupportedOperationException("Special Item already initialized");
+        }
+    }
+    public void addGameImageHolder(ImageView gameImageHolder)  {
+        if (this.gameImageHolder == null) {
+            this.gameImageHolder = gameImageHolder;
+            add(gameImageHolder);
+        }else {
+            throw new UnsupportedOperationException("Special Item already initialized");
+        }
     }
 }
