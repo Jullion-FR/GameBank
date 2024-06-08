@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import java.util.HexFormat;
 
 public class VueMosaique extends Vue{
+    public static final Vue VUE_MOSAIQUE = new VueMosaique();
     private int maxSize = 200;
     public VueMosaique() {
         createGridElement();

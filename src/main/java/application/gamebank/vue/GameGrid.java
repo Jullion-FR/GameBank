@@ -21,9 +21,10 @@ import javafx.stage.Stage;
 public class GameGrid {
 //    public static Vue VUE_MOSAIQUE = new VueMosaique();
 //    public static Vue VUE_LISTE = new VueListe();
-    private  Vue vue;
+    private Vue vue;
     private GridPane grid;
     public GameGrid() {
+        vue = VueMosaique.VUE_MOSAIQUE;
         resetGrid();
     }
     public void resetGrid() {
@@ -82,5 +83,9 @@ public class GameGrid {
                 j++;
             }
         }
+    }
+
+    public Vue getVue() {
+        return vue;
     }
 }

@@ -14,5 +14,5 @@ module application.gamebank {
     opens application.gamebank.api to com.fasterxml.jackson.databind, javafx.fxml;
     exports application.gamebank.results;
     opens application.gamebank.results to com.fasterxml.jackson.databind, javafx.fxml;
-    exports application.gamebank.games to application.gamebank;
+    exports application.gamebank.games;
 }

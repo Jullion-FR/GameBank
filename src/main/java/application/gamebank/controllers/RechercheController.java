@@ -23,8 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class RechercheController {
-    public static final Vue VUE_MOSAIQUE = new VueMosaique();
-    public static final Vue VUE_LISTE = new VueListe();
+
     private Vue vueActuelle;
     @FXML
     private ScrollPane scrollPane;
@@ -35,19 +34,16 @@ public class RechercheController {
 
     @FXML
     private ImageView pictureImageView;
-
     private MyGames games;
     private APIManager apiManager;
     private GameGrid gameGrid;
 
     @FXML
     public void initialize(){
-        vueActuelle = VUE_MOSAIQUE;
         games = new MyGames();
         apiManager = new APIManager();
         gameGrid = new GameGrid();
-        vueActuelle = VUE_MOSAIQUE;
-        gameGrid.setVue(vueActuelle);
+        vueActuelle = gameGrid.getVue();
     }
     @FXML
     public void onAction() {
@@ -85,9 +81,9 @@ public class RechercheController {
     @FXML
     public void switchView(){
         if (vueActuelle instanceof VueMosaique) {
-            vueActuelle = VUE_LISTE;
+            vueActuelle = VueListe.VUE_LISTE;
         } else {
-            vueActuelle = VUE_MOSAIQUE;
+            vueActuelle = VueMosaique.VUE_MOSAIQUE;
         }
         gameGrid.setVue(vueActuelle);
     }
@@ -100,7 +96,6 @@ public class RechercheController {
             Game game = games.getAllGames().get(Integer.parseInt(((Node) event.getSource()).getId()));
             ((JeuController) loader.getController()).chargerJeu(game);
             ((Stage) ((VBox) event.getSource()).getScene().getWindow()).setScene(scene);
-
         } catch (Exception e) {
             e.printStackTrace();
         }

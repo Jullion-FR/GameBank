@@ -7,10 +7,27 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 public class JeuController {
     @FXML
+    private AnchorPane addGamePane;
+
+    @FXML
+    private AnchorPane addTagPane;
+
+    @FXML
+    private AnchorPane backPane;
+
+    @FXML
     private Label description;
+
+    @FXML
+    private AnchorPane dropGamePane;
+
+    @FXML
+    private AnchorPane dropTagPane;
 
     @FXML
     private ImageView image;
@@ -29,5 +46,29 @@ public class JeuController {
         image.setImage(imageAvecUrl);
 
        /// description.setText(game.getDescription);
+    }
+    @FXML
+    void addGameToLibrary(MouseEvent event) {
+
+    }
+
+    @FXML
+    void addTagToGame(MouseEvent event) {
+
+    }
+
+    @FXML
+    void backToLastWindow(MouseEvent event) {
+
+    }
+
+    @FXML
+    void removeGameFromLibrary(MouseEvent event) {
+
+    }
+
+    @FXML
+    void removeTagFromGame(MouseEvent event){
+
     }
 }
