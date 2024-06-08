@@ -24,8 +24,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class APIManager {
 
-    public void setInformations(MyGames games, String searchedText, int wanted)  throws GameNotFoundException{
-
+    public MyGames setInformations( String searchedText, int wanted)  throws GameNotFoundException{
+        MyGames games = new MyGames();
         String searchedEncoded = "";
         try {
             searchedEncoded = URLEncoder.encode(searchedText, StandardCharsets.UTF_8.toString());
@@ -47,7 +47,7 @@ public class APIManager {
             response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
         } catch (InterruptedException|IOException e) {
             Thread.currentThread().interrupt();
-            return;
+            return null;
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -67,9 +67,10 @@ public class APIManager {
                 }catch(Exception e){}
             }
 
-        } catch (JsonProcessingException | GameNotFoundException e) {
+        } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+        return games;
     }
 
 }

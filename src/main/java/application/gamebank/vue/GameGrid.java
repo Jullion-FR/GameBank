@@ -1,29 +1,45 @@
 package application.gamebank.vue;
 
+import application.gamebank.Main;
+import application.gamebank.controllers.JeuController;
 import application.gamebank.games.Game;
 import application.gamebank.games.MyGames;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class GameGrid {
 //    public static Vue VUE_MOSAIQUE = new VueMosaique();
 //    public static Vue VUE_LISTE = new VueListe();
     private  Vue vue;
-    private final GridPane grid;
+    private GridPane grid;
     public GameGrid() {
+        resetGrid();
+    }
+    public void resetGrid() {
         grid = new GridPane();
         grid.setGridLinesVisible(false);
         grid.setAlignment(Pos.CENTER);
-        grid.setPadding(new Insets(10,10,10,60));
-        grid.setHgap(10); // Espacement horizontal entre les cellules
-        grid.setVgap(10); // Espacement vertical entre les cellules
+        grid.setHgap(10);
+        grid.setVgap(10);
     }
-
+    public void applyPadding(double haut, double droite, double bas, double gauche){
+        Insets inset = new Insets(haut,droite,bas,gauche);
+        grid.setPadding(inset);
+    }
+    public void applyPadding(double value){
+        applyPadding(value, value, value, value);
+    }
     public GridPane getGrid() {
         return grid;
     }
@@ -32,10 +48,10 @@ public class GameGrid {
         this.vue = vue;
     }
 
-    public void fill(MyGames games, int maxGridWidth) {
-        //grid.getChildren().clear(); // Clear existing elements
 
-        int i = 0, j = 0;
+    public void fill(MyGames games, int maxGridWidth) {
+
+        int i = 0, j = 0, k = 0;
         for (Game game : games.getAllGames()) {
             GridElement element = vue.getGridElement().clone();
 
@@ -45,18 +61,21 @@ public class GameGrid {
             //Game name
             Label nameHolder = element.getNameHolder();
             nameHolder.setText(name);
-            vue.formatNameLabel(nameHolder);
 
             //Game image
-            ImageView logoHolder = element.getGameImageHolder();
-            logoHolder.setImage(img);
-            vue.formatGameImageView(logoHolder);
+            ImageView imageHolder = element.getGameImageHolder();
+            imageHolder.setImage(img);
 
-            //Other Specific  Formating
+
             Pane box = element.getRoot();
-            vue.formatRoot(box);
+            box.setId(String.valueOf(k));
+
+            //Format
+            vue.formatAll(box, imageHolder, nameHolder);
 
             grid.add(box, i, j);
+
+            k++;
             i++;
             if (i == maxGridWidth) {
                 i = 0;
@@ -64,5 +83,4 @@ public class GameGrid {
             }
         }
     }
-
 }

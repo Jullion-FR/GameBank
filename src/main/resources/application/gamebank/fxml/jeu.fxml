@@ -23,7 +23,7 @@
       </AnchorPane>
       <AnchorPane layoutX="-4.0" layoutY="-1.0" prefHeight="492.0" prefWidth="966.0" style="-fx-background-color: black;">
          <children>
-            <ImageView fx:id="image" fitHeight="492.0" fitWidth="966.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="image" fitHeight="492.0" fitWidth="966.0" layoutY="-1.0" pickOnBounds="true" />
          </children></AnchorPane>
       <AnchorPane layoutX="960.0" layoutY="11.0" prefHeight="732.0" prefWidth="318.0">
          <children>

@@ -21,14 +21,13 @@ public class JeuController {
     private Game game;
     private APIManager apiManager;
 
-    public JeuController() {
-        super();
-        game = new Game();
-    }
-    public void ChargerJeu() {
-        nom.setText(game.getName());
-        Image imageavecUrl = new Image(game.getImageURL());
-        image.setImage(imageavecUrl);
+    public void chargerJeu(Game gameToLoad) {
+        this.game = gameToLoad;
+        System.out.println("Chargement de : "+game);
+        nom.setText(this.game.getName());
+        Image imageAvecUrl = new Image(game.getImageURL());
+        image.setImage(imageAvecUrl);
+
        /// description.setText(game.getDescription);
     }
 }

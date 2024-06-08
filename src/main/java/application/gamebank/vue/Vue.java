@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 
 public abstract class Vue {
     protected GridElement gridElement;
-    abstract  void createGridElement();
+    abstract void createGridElement();
 
     public GridElement getGridElement() {
         return gridElement;
@@ -14,6 +14,12 @@ public abstract class Vue {
 
     abstract void formatGameImageView(ImageView imageView);
     abstract void formatRoot(Pane root) ;
-    abstract  void formatNameLabel(Label nameLabel);
+    abstract void formatNameLabel(Label nameLabel);
+
+    protected void formatAll(Pane root, ImageView imageView, Label nameLabel) {
+        formatGameImageView(imageView);
+        formatNameLabel(nameLabel);
+        formatRoot(root);
+    }
 
 }
