@@ -22,7 +22,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class RechercheController {
+public class RechercheController extends CanOpenGameDetails {
 
     private Vue vueActuelle;
     @FXML
@@ -34,9 +34,9 @@ public class RechercheController {
 
     @FXML
     private ImageView pictureImageView;
-    private MyGames games;
     private APIManager apiManager;
     private GameGrid gameGrid;
+
 
     @FXML
     public void initialize(){
@@ -88,17 +88,11 @@ public class RechercheController {
         gameGrid.setVue(vueActuelle);
     }
 
-
-        public void openGameDetails(MouseEvent event)  {
-        try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/jeu.fxml"));
-            Scene scene = new Scene(loader.load());
-            Game game = games.getAllGames().get(Integer.parseInt(((Node) event.getSource()).getId()));
-            ((JeuController) loader.getController()).chargerJeu(game);
-            ((Stage) ((VBox) event.getSource()).getScene().getWindow()).setScene(scene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @Override
+    public JeuController openGameDetails(MouseEvent event){
+        JeuController control = super.openGameDetails(event);
+        control.activateAddGamePane();
+        return control;
     }
 
 }

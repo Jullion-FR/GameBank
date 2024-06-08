@@ -14,7 +14,7 @@ import javafx.scene.control.ScrollPane;
 
 
 
-public class AccueilController {
+public class AccueilController extends CanOpenGameDetails {
 
     List<String> liste = Arrays.asList("Super Mario Bros.", "The " +
                     "Legend of Zelda", "Minecraft", "Fortnite", "Call of Duty",
