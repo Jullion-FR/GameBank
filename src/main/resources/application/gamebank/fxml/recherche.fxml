@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
@@ -18,21 +19,30 @@
                   <Font size="20.0" />
                </font>
             </TextField>
-            <AnchorPane layoutX="754.0" layoutY="16.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane layoutX="754.0" layoutY="16.0" onMouseClicked="#switchView" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
                <children>
-                  <ImageView fitHeight="45.0" fitWidth="45.0" onMouseClicked="#switchView" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/mosaique.png" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
-            <ImageView fx:id="validateImageView" fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="17.0" onMouseClicked="#onAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="17.0" onMouseClicked="#onAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/loupe.png" />
                </image>
             </ImageView>
-            <Separator layoutX="22.0" layoutY="75.0" prefHeight="1.0" prefWidth="789.0" />
+            <Separator layoutX="22.0" layoutY="68.0" prefHeight="1.0" prefWidth="789.0" />
+            <AnchorPane fx:id="backPane" focusTraversable="true" layoutX="1161.0" layoutY="16.0" onMouseClicked="#backToLastWindow" opacity="0.8" prefHeight="46.0" prefWidth="98.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+               <children>
+                  <Label layoutX="11.0" layoutY="4.0" text="Retour">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1280.0" />

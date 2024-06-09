@@ -1,5 +1,6 @@
 package application.gamebank.controllers;
 
+import application.gamebank.Main;
 import application.gamebank.api.APIManager;
 import application.gamebank.games.Game;
 import application.gamebank.games.MyGames;
@@ -58,7 +59,10 @@ public class JeuController {
 
     @FXML
     void addGameToLibrary(MouseEvent event) {
-
+        Main.accueilController.getGames().addGame(game);
+        Scene thisScene = ((Pane) event.getSource()).getScene();
+        ((Stage) thisScene.getWindow()).setScene(Main.accueilController.getScene());
+        Main.accueilController.fillView();
     }
 
     @FXML
