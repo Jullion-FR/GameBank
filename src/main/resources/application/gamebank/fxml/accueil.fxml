@@ -37,7 +37,7 @@
             </TextField>
             <AnchorPane layoutX="746.0" layoutY="28.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
                <children>
-                  <ImageView fitHeight="45.0" fitWidth="45.0" onMouseClicked="#switchView" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageVue" fitHeight="45.0" fitWidth="45.0" onMouseClicked="#switchView" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/mosaique.png" />
                      </image>

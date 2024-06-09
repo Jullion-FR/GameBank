@@ -67,6 +67,7 @@ public abstract class gameViewer {
     public void switchView(){
         if (vueActuelle instanceof VueMosaique) {
             vueActuelle = vueListe;
+
         } else {
             vueActuelle = vueMosaique;
         }
