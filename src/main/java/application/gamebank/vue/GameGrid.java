@@ -57,7 +57,13 @@ public class GameGrid {
             GridElement element = vue.getGridElement().clone();
 
             String name = game.getName();
-            Image img = new Image(game.getImageURL());
+            Image img;
+            try {
+                img = new Image(game.getImageURL());
+            }catch (Exception e) {
+                img = new Image(String.valueOf(Main.class.getResource("images/mosaique.png")));
+            }
+
 
             //Game name
             Label nameHolder = element.getNameHolder();

@@ -2,6 +2,7 @@ package application.gamebank.games;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MyGames implements Serializable {
@@ -25,5 +26,16 @@ public class MyGames implements Serializable {
         allGames.remove(game);
     }
 
+    public void triAlphabetique() {
+        Collections.sort(allGames);
+    }
 
+    @Override
+    public String toString() {
+        String result = "";
+        for (Game game : allGames) {
+            result += game.toString() +" ; ";
+        }
+        return result;
+    }
 }

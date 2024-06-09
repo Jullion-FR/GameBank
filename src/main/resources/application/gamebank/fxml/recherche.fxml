@@ -10,16 +10,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.gamebank.controllers.RechercheController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="935.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.gamebank.controllers.RechercheController">
    <children>
-      <AnchorPane prefHeight="75.0" prefWidth="1280.0">
+      <AnchorPane prefHeight="75.0" prefWidth="947.0">
          <children>
-            <TextField fx:id="entry" layoutX="71.0" layoutY="14.0" onAction="#onAction" prefHeight="50.0" prefWidth="666.0" promptText="Rechercher un jeu" style="-fx-background-color: #9A5ACC;">
+            <TextField fx:id="entry" layoutX="71.0" layoutY="14.0" onAction="#onAction" prefHeight="50.0" prefWidth="666.0" promptText="Rechercher un jeu" style="-fx-background-color: #3F5A90; -fx-text-fill: white;">
                <font>
                   <Font size="20.0" />
                </font>
             </TextField>
-            <AnchorPane layoutX="754.0" layoutY="16.0" onMouseClicked="#switchView" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane layoutX="754.0" layoutY="16.0" onMouseClicked="#switchView" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #3F5A80; -fx-background-radius: 7;">
                <children>
                   <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -34,9 +34,9 @@
                </image>
             </ImageView>
             <Separator layoutX="22.0" layoutY="68.0" prefHeight="1.0" prefWidth="789.0" />
-            <AnchorPane fx:id="backPane" focusTraversable="true" layoutX="1161.0" layoutY="16.0" onMouseClicked="#backToLastWindow" opacity="0.8" prefHeight="46.0" prefWidth="98.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane fx:id="backPane" focusTraversable="true" layoutX="822.0" layoutY="15.0" onMouseClicked="#backToAccueil" opacity="0.8" prefHeight="46.0" prefWidth="98.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
                <children>
-                  <Label layoutX="11.0" layoutY="4.0" text="Retour">
+                  <Label layoutX="11.0" layoutY="4.0" text="Retour" textFill="WHITE">
                      <font>
                         <Font size="26.0" />
                      </font>
@@ -45,6 +45,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1280.0" />
+      <ScrollPane fx:id="scrollPane" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="927.0" />
    </children>
 </VBox>

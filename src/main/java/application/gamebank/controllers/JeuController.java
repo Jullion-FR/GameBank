@@ -24,9 +24,6 @@ public class JeuController {
     private AnchorPane backPane;
 
     @FXML
-    private Label description;
-
-    @FXML
     private AnchorPane dropGamePane;
 
     @FXML
@@ -38,10 +35,8 @@ public class JeuController {
     @FXML
     private Label nom;
 
-    private Scene lastScene;
     private Game game;
-    private APIManager apiManager;
-
+    private Scene lastScene;
 
     public void chargerJeu(Game gameToLoad) {
         this.game = gameToLoad;
@@ -52,15 +47,11 @@ public class JeuController {
        // description.setText(game.getDescription);
     }
 
-    public void setLastScene(Scene scene) {
-        this.lastScene = scene;
-    }
 
     @FXML
     void addGameToLibrary(MouseEvent event) {
         Main.accueilController.getGames().addGame(game);
-        Scene thisScene = ((Pane) event.getSource()).getScene();
-        ((Stage) thisScene.getWindow()).setScene(Main.accueilController.getScene());
+        backToLastWindow(event);
         Main.accueilController.fillView();
     }
 
@@ -72,12 +63,20 @@ public class JeuController {
     @FXML
     void backToLastWindow(MouseEvent event) {
         Scene thisScene = ((Pane) event.getSource()).getScene();
-        ((Stage) thisScene.getWindow()).setScene(lastScene);
+        Stage stage = (Stage) thisScene.getWindow();
+        if(lastScene != null) {
+            stage.setScene(lastScene);
+        }else {stage.close();}
     }
-
+    void setLastScene(Scene scene) {
+        this.lastScene = scene;
+    }
     @FXML
     void removeGameFromLibrary(MouseEvent event) {
-
+        Main.accueilController.getGames().removeGame(game);
+        Scene thisScene = ((Pane) event.getSource()).getScene();
+        ((Stage) thisScene.getWindow()).setScene(Main.accueilController.getScene());
+        Main.accueilController.fillView();
     }
 
     @FXML

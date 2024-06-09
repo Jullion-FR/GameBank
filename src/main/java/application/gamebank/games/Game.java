@@ -3,15 +3,21 @@ package application.gamebank.games;
 import java.io.Serializable;
 import java.util.Comparator;
 
-public class Game implements Comparator<Game>, Serializable {
+public class Game implements Comparable<Game>, Serializable {
 
     private String name;
     private String imageURL;
-
-    public Game(String name, String imageURL) {
+    private String description;
+    public Game(String name, String imageURL, String description){
         super();
+        ((name.charAt(0))+"").toUpperCase();
         this.name = name;
         this.imageURL = imageURL;
+        this.description = description;
+    }
+
+    public Game(String name, String imageURL) {
+        this(name, imageURL,"");
     }
 
     public Game() {
@@ -22,16 +28,8 @@ public class Game implements Comparator<Game>, Serializable {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getImageURL() {
         return imageURL;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
     }
 
     @Override
@@ -40,7 +38,7 @@ public class Game implements Comparator<Game>, Serializable {
     }
 
     @Override
-    public int compare(Game o1, Game o2) {
-        return o1.name.compareTo(o2.name);
+    public int compareTo(Game other) {
+        return this.name.compareToIgnoreCase(other.name);
     }
 }

@@ -10,12 +10,12 @@ public class PersistenceBySerialization implements Persistence {
     private static final String GAMES_FILE = "gamesSave";
     private static final String TAGS_FILE = "tagSave";
 
-    /** Savegarde les Jeux présent dans la variable games */
+    /** Sauvegarde les Jeux présent dans la variable games */
     @Override
     public void saveGames(MyGames games) {
         try {
             save(GAMES_FILE, games);
-        } catch (IOException _) {
+        } catch (IOException e) {
             System.err.println("La savegarde des Jeux à échouée");
         }
     }
@@ -25,7 +25,7 @@ public class PersistenceBySerialization implements Persistence {
     public void saveTags(ListeTags tags) {
         try {
             save(TAGS_FILE, tags);
-        } catch (IOException _) {
+        } catch (IOException e) {
             System.err.println("La savegarde des Tags à échouée");
         }
     }

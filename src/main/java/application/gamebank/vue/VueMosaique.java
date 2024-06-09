@@ -12,8 +12,8 @@ import javafx.scene.paint.Color;
 import java.util.HexFormat;
 
 public class VueMosaique extends Vue{
-    public static final int DEFAULT_MAX_GRID_LENGTH = 5;
-    private int maxSize = 200;
+    public static final int DEFAULT_MAX_GRID_LENGTH = 4;
+    private int maxSize = 175;
     public VueMosaique() {
         createGridElement();
     }

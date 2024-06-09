@@ -26,44 +26,46 @@ import javafx.stage.Stage;
 
 
 public class AccueilController extends gameViewer {
-
-    private MyGames games;
     private ListeTags tags;
     private Persistence persistence = new PersistenceBySerialization();
 
     @FXML
     public void initialize() {
-        persistence.load();
+        games = persistence.loadGames();
         //todo chargement sauvergarde
-        vueActuelle.setMaxGridLength(3);
+        vueMosaique.setMaxGridLength(3);
         fillView();
     }
 
-    @Override
-    public JeuController openGameDetails(MouseEvent event) {
-        JeuController control = super.openGameDetails(event);
-        control.activateDropGamePane();
-        control.activateAddTagPane();
-        //if(games.getAllGames().get(Integer.parseInt(((Node) event.getSource()).getId())))
-        //todo voir si le jeu a au moins un tag
-        control.activateDropTagPane();
-        return control;
-    }
 
     @FXML
     RechercheController startResearch(MouseEvent event) {
         try {
-            Node source = (Node) event.getSource();
+            Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/recherche.fxml"));
             Scene scene = new Scene(loader.load());
             RechercheController control = loader.getController();
             control.setScene(scene);
             control.setLastScene(thisScene);
-            ((Stage) thisScene.getWindow()).setScene(scene);
+
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
             return control;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    void fillView() {
+        games.triAlphabetique();
+        super.fillView();
+    }
+
+    @FXML
+    void createNewTag(MouseEvent event) {
+
     }
 }

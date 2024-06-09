@@ -14,7 +14,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public abstract class gameViewer {
     @FXML
@@ -26,23 +28,41 @@ public abstract class gameViewer {
     protected Vue vueActuelle = gameGrid.getVue();
 
     protected Scene thisScene;
+
     public JeuController openGameDetails(MouseEvent event) {
         try {
             Node source = (Node) event.getSource();
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/jeu.fxml"));
             Scene scene = new Scene(loader.load());
             Game game = games.getAllGames().get(Integer.parseInt((source).getId()));
+
             JeuController control = loader.getController();
-            control.setLastScene(thisScene);
             control.chargerJeu(game);
-            ((Stage) thisScene.getWindow()).setScene(scene);
+
+            if (this instanceof AccueilController){
+                System.out.println("isAccueilController");
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initOwner(thisScene.getWindow());
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(scene);
+                stage.setResizable(false);
+
+                control.activateDropGamePane();
+
+                stage.showAndWait();
+            }else{
+                System.out.println("isOtherController");
+                control.setLastScene(thisScene);
+                ((Stage) source.getScene().getWindow()).setScene(scene);
+            }
+
             return control;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-
     @FXML
     public void switchView(){
         if (vueActuelle instanceof VueMosaique) {

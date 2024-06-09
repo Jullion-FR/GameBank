@@ -38,7 +38,7 @@ public class APIManager {
                 .uri(URI.create("https://api.rawg.io/api/games"
                         + "?key=41a5c4ca050840b18caf582c213f33a5"
                         + "&search=" + searchedEncoded
-                        + "&search_exact=1"
+                        + "&search_exact=2"
                         + "&page_size="+wanted))
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
@@ -68,7 +68,9 @@ public class APIManager {
             }
 
         } catch (JsonProcessingException e) {
+            System.out.println("erreur json");
             e.printStackTrace();
+            setInformations(searchedText, wanted);
         }
         return games;
     }

@@ -1,21 +1,13 @@
 package application.gamebank.controllers;
 
+import application.gamebank.Main;
 import application.gamebank.api.APIManager;
 import application.gamebank.api.GameNotFoundException;
-import application.gamebank.games.MyGames;
-import application.gamebank.vue.GameGrid;
-import application.gamebank.vue.Vue;
-import application.gamebank.vue.VueListe;
-import application.gamebank.vue.VueMosaique;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class RechercheController extends gameViewer {
@@ -27,7 +19,6 @@ public class RechercheController extends gameViewer {
     private Scene lastScene;
     @FXML
     public void initialize(){
-
         apiManager = new APIManager();
     }
     @FXML
@@ -59,8 +50,9 @@ public class RechercheController extends gameViewer {
         return control;
     }
     @FXML
-    void backToLastWindow(MouseEvent event) {
-        ((Stage) thisScene.getWindow()).setScene(lastScene);
+    void backToAccueil(MouseEvent event) {
+        //Main.accueilController.fillView();
+        ((Stage) thisScene.getWindow()).close();
     }
     public void setLastScene(Scene scene) {
         this.lastScene = scene;
