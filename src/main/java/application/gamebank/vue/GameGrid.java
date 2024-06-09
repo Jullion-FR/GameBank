@@ -57,7 +57,7 @@ public class GameGrid {
             GridElement element = vue.getGridElement().clone();
 
             String name = game.getName();
-            Image img = game.getImage();
+            Image img = new Image(game.getImageURL());
 
             //Game name
             Label nameHolder = element.getNameHolder();

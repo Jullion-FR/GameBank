@@ -3,7 +3,6 @@ package application.gamebank.controllers;
 import application.gamebank.Main;
 import application.gamebank.api.APIManager;
 import application.gamebank.games.Game;
-import application.gamebank.games.MyGames;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -55,7 +54,6 @@ public class JeuController {
     public void setLastScene(Scene scene) {
         this.lastScene = scene;
     }
-
 
     @FXML
     void addGameToLibrary(MouseEvent event) {

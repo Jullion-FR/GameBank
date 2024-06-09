@@ -8,9 +8,14 @@ public class Game implements Comparator<Game>, Serializable {
     private String name;
     private String imageURL;
 
-    public Game() {
+    public Game(String name, String imageURL) {
         super();
-        this.name = "";
+        this.name = name;
+        this.imageURL = imageURL;
+    }
+
+    public Game() {
+        this("", null);
     }
 
     public String getName() {
