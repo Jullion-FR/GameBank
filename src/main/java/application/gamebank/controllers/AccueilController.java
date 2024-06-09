@@ -3,6 +3,10 @@ package application.gamebank.controllers;
 import application.gamebank.Main;
 import application.gamebank.games.Game;
 import application.gamebank.games.MyGames;
+import application.gamebank.persistence.Persistence;
+import application.gamebank.persistence.PersistenceBySerialization;
+import application.gamebank.tags.ListeTags;
+import application.gamebank.tags.Tag;
 import application.gamebank.vue.GameGrid;
 import application.gamebank.vue.Vue;
 import javafx.fxml.FXML;
@@ -23,8 +27,13 @@ import javafx.stage.Stage;
 
 public class AccueilController extends gameViewer {
 
+    private MyGames games;
+    private ListeTags tags;
+    private Persistence persistence = new PersistenceBySerialization();
+
     @FXML
     public void initialize() {
+        persistence.load();
         //todo chargement sauvergarde
         vueActuelle.setMaxGridLength(3);
         fillView();
