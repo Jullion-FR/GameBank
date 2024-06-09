@@ -27,11 +27,11 @@ public class RechercheController extends gameViewer {
     private Scene lastScene;
     @FXML
     public void initialize(){
+
         apiManager = new APIManager();
     }
     @FXML
     public void onAction() {
-        int maxGridWidth = 5;
         String searchedText = entry.getText();
 
         if (searchedText.isBlank())
@@ -39,7 +39,7 @@ public class RechercheController extends gameViewer {
         System.out.println("Recherche en cours...");
         entry.clear();
         try {
-            games = apiManager.setInformations(searchedText, maxGridWidth*4);
+            games = apiManager.setInformations(searchedText, vueActuelle.getMaxGridLength()*4);
         } catch (GameNotFoundException e) {
             scrollPane.setContent(new Label("Aucun résultat"));
             System.out.println("Rien trouvé");

@@ -43,6 +43,7 @@ public class JeuController {
     private Game game;
     private APIManager apiManager;
 
+
     public void chargerJeu(Game gameToLoad) {
         this.game = gameToLoad;
         System.out.println("Chargement de : "+game);

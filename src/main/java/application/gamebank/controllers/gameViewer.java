@@ -20,11 +20,12 @@ public abstract class gameViewer {
     @FXML
     protected ScrollPane scrollPane;
     protected MyGames games = new MyGames();
-    protected GameGrid gameGrid = new GameGrid();
+    protected Vue vueMosaique = new VueMosaique();
+    protected Vue vueListe = new VueListe();
+    protected GameGrid gameGrid = new GameGrid(vueMosaique);
     protected Vue vueActuelle = gameGrid.getVue();
 
     protected Scene thisScene;
-
     public JeuController openGameDetails(MouseEvent event) {
         try {
             Node source = (Node) event.getSource();
@@ -45,9 +46,9 @@ public abstract class gameViewer {
     @FXML
     public void switchView(){
         if (vueActuelle instanceof VueMosaique) {
-            vueActuelle = VueListe.VUE_LISTE;
+            vueActuelle = vueListe;
         } else {
-            vueActuelle = VueMosaique.VUE_MOSAIQUE;
+            vueActuelle = vueMosaique;
         }
         gameGrid.setVue(vueActuelle);
         fillView();
@@ -55,7 +56,7 @@ public abstract class gameViewer {
 
     void fillView() {
         gameGrid.resetGrid();
-        gameGrid.fill(games, 4);
+        gameGrid.fill(games);
         gameGrid.applyPadding(10);
 
         scrollPane.setContent(gameGrid.getGrid());
@@ -66,6 +67,7 @@ public abstract class gameViewer {
 
         scrollPane.setContent(gameGrid.getGrid());
     }
+
 
     public void setScene(Scene scene) {
         thisScene = scene;

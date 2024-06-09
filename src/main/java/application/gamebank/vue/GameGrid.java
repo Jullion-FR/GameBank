@@ -23,8 +23,8 @@ public class GameGrid {
 //    public static Vue VUE_LISTE = new VueListe();
     private Vue vue;
     private GridPane grid;
-    public GameGrid() {
-        vue = VueMosaique.VUE_MOSAIQUE;
+    public GameGrid(Vue defaultView) {
+        vue = defaultView;
         resetGrid();
     }
     public void resetGrid() {
@@ -50,7 +50,7 @@ public class GameGrid {
     }
 
 
-    public void fill(MyGames games, int maxGridWidth) {
+    public void fill(MyGames games) {
 
         int i = 0, j = 0, k = 0;
         for (Game game : games.getAllGames()) {
@@ -78,7 +78,7 @@ public class GameGrid {
 
             k++;
             i++;
-            if (i == maxGridWidth) {
+            if (i == vue.getMaxGridLength()) {
                 i = 0;
                 j++;
             }

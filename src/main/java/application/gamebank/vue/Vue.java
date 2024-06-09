@@ -6,6 +6,16 @@ import javafx.scene.layout.Pane;
 
 public abstract class Vue {
     protected GridElement gridElement;
+    protected int maxGridLength = 1;
+
+    public int getMaxGridLength() {
+        return maxGridLength;
+    }
+
+    public void setMaxGridLength(int maxGridLength) {
+        this.maxGridLength = maxGridLength;
+    }
+
     abstract void createGridElement();
 
     public GridElement getGridElement() {

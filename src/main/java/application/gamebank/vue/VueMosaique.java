@@ -12,13 +12,14 @@ import javafx.scene.paint.Color;
 import java.util.HexFormat;
 
 public class VueMosaique extends Vue{
-    public static final Vue VUE_MOSAIQUE = new VueMosaique();
+    public static final int DEFAULT_MAX_GRID_LENGTH = 5;
     private int maxSize = 200;
     public VueMosaique() {
         createGridElement();
     }
     @Override
     protected  void  createGridElement() {
+        maxGridLength = DEFAULT_MAX_GRID_LENGTH;
         ImageView img = new ImageView(String.valueOf(Main.class.getResource("images/mosaique.png")));
         formatGameImageView(img);
 
@@ -28,9 +29,9 @@ public class VueMosaique extends Vue{
 
     }
     @Override
-    public void formatGameImageView(ImageView imgv){
-        imgv.setFitHeight(maxSize);
-        imgv.setFitWidth(maxSize);
+    public void formatGameImageView(ImageView imageView){
+        imageView.setFitHeight(maxSize);
+        imageView.setFitWidth(maxSize);
     }
 
     @Override

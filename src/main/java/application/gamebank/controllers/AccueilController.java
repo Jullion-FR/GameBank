@@ -26,6 +26,7 @@ public class AccueilController extends gameViewer {
     @FXML
     public void initialize() {
         //todo chargement sauvergarde
+        vueActuelle.setMaxGridLength(3);
         fillView();
     }
 
