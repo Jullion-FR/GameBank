@@ -35,16 +35,21 @@ public class JeuController {
     @FXML
     private Label nom;
 
+    @FXML
+    private Label noteLabel;
+
+    @FXML
+    private Label dateSortieLabel;
     private Game game;
     private Scene lastScene;
 
     public void chargerJeu(Game gameToLoad) {
         this.game = gameToLoad;
         System.out.println("Chargement de : "+game);
-        nom.setText(this.game.getName());
-        Image imageAvecUrl = new Image(game.getImageURL());
-        image.setImage(imageAvecUrl);
-       // description.setText(game.getDescription);
+        nom.setText(game.getName());
+        image.setImage(new Image(game.getImageURL()));
+        noteLabel.setText(game.getRating() + " / 5");
+        dateSortieLabel.setText(game.getReleaseDate());
     }
 
 
@@ -109,5 +114,9 @@ public class JeuController {
     }
     void desactivateDropTagPane(){
         dropTagPane.setDisable(true);
+    }
+
+    public Scene getScene() {
+        return lastScene;
     }
 }

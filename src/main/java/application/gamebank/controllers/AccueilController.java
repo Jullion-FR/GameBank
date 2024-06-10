@@ -58,6 +58,8 @@ public class AccueilController extends gameViewer {
             try {
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/recherche.fxml"));
                 Scene scene = new Scene(loader.load());
+                RechercheController control = loader.getController();
+                control.setScene(scene);
                 researchStage.setScene(scene);
                 researchStage.show();
             } catch (Exception e) {
@@ -71,7 +73,7 @@ public class AccueilController extends gameViewer {
 
     @Override
     void fillView() {
-        games.triAlphabetique();
+        games.triAlphabetique();//faire des classes tri avec interface
         super.fillView();
     }
 

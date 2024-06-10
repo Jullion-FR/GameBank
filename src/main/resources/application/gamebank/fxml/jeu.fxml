@@ -17,6 +17,12 @@
                   <Font size="40.0" />
                </font>
             </Label>
+            <Label fx:id="noteLabel" layoutX="604.0" layoutY="72.0" prefHeight="36.0" prefWidth="69.0" text="0.00/5" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateSortieLabel" layoutX="25.0" layoutY="148.0" text="01/01/2001" />
          </children>
       </AnchorPane>
       <ImageView fx:id="image" fitHeight="480.0" fitWidth="693.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true">
@@ -35,7 +41,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="addTagPane" disable="true" layoutX="14.0" layoutY="14.0" onMouseClicked="#addTagToGame" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane fx:id="addTagPane" disable="true" layoutX="14.0" layoutY="14.0" onMouseClicked="#addTagToGame" opacity="0.5" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="2.0" pickOnBounds="true">
                      <image>
@@ -44,7 +50,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="dropTagPane" disable="true" layoutX="193.0" layoutY="14.0" opacity="0.6" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane fx:id="dropTagPane" disable="true" layoutX="193.0" layoutY="14.0" opacity="0.5" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="3.0" layoutY="1.0" pickOnBounds="true">
                      <image>
@@ -62,7 +68,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="backPane" focusTraversable="true" layoutX="79.0" layoutY="607.0" onMouseClicked="#backToLastWindow" opacity="0.8" prefHeight="46.0" prefWidth="98.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane fx:id="backPane" focusTraversable="true" layoutX="79.0" layoutY="607.0" onMouseClicked="#backToLastWindow" prefHeight="46.0" prefWidth="98.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
                <children>
                   <Label layoutX="11.0" layoutY="5.0" text="Retour">
                      <font>

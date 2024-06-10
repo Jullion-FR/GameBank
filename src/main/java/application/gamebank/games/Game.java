@@ -25,7 +25,8 @@ public class Game implements Comparable<Game>, Serializable {
     public String getImageURL() {
         return imageURL;
     }
-
+    public double getRating() {return rating;}
+    public String getReleaseDate() {return releaseDate;}
     @Override
     public String toString() {
         return name;
@@ -35,4 +36,6 @@ public class Game implements Comparable<Game>, Serializable {
     public int compareTo(Game other) {
         return this.name.compareToIgnoreCase(other.name);
     }
+
+
 }
