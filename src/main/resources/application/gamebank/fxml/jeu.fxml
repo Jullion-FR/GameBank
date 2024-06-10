@@ -19,14 +19,19 @@
                   <Font size="40.0" />
                </font>
             </Label>
-            <Label fx:id="labelNote" layoutX="596.0" layoutY="54.0" prefHeight="29.0" prefWidth="52.0" text="4 / 5">
+            <Label fx:id="noteLabel" layoutX="596.0" layoutY="54.0" prefHeight="29.0" prefWidth="52.0" text="4 / 5">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="nom1" layoutX="25.0" layoutY="75.0" prefHeight="74.0" prefWidth="539.0" text="Date de sortie:" wrapText="true">
+            <Label layoutX="25.0" layoutY="75.0" prefHeight="74.0" prefWidth="182.0" text="Date de sortie:" wrapText="true">
                <font>
                   <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateSortieLabel" layoutX="198.0" layoutY="96.0" prefHeight="35.0" prefWidth="156.0" text="aaaa-mm-jj">
+               <font>
+                  <Font size="24.0" />
                </font>
             </Label>
          </children>
