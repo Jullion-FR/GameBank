@@ -37,7 +37,7 @@ public class VueMosaique extends Vue{
     @Override
      void formatRoot(Pane root) {
         root.setPadding(new Insets(10));
-        root.setStyle("-fx-alignment: center;-fx-background-color: #9A5ACCBF;-fx-background-radius:10 ;");
+        root.setStyle("-fx-alignment: center;-fx-background-color:  #3F5A90;-fx-background-radius:10 ;");
     }
 
     @Override

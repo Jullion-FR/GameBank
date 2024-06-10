@@ -23,7 +23,7 @@ public class Tag implements Comparable<Tag> {
         anchorPane.setLayoutY(95.0);
         anchorPane.setPrefHeight(32.0);
         anchorPane.setPrefWidth(125.0);
-        anchorPane.setStyle("-fx-background-color: black; -fx-background-radius: 7;");
+        anchorPane.setStyle("-fx-background-color:  #3F5A90; -fx-background-radius: 7;");
 
         // Create Label
         Label label = new Label(tag.nom);

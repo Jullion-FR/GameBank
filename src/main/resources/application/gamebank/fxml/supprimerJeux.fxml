@@ -22,17 +22,17 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Pane layoutX="60.0" layoutY="244.0" onMouseClicked="#onCancelAction" prefHeight="65.0" prefWidth="180.0" style="-fx-background-color: #9A5ACCBF; -fx-border-color: BLACK; -fx-border-radius: 7; -fx-background-radius: 7;">
+      <Pane layoutX="60.0" layoutY="244.0" onMouseClicked="#onCancelAction" prefHeight="65.0" prefWidth="180.0" style="-fx-background-color: #3F5A90; -fx-border-color: BLACK; -fx-border-radius: 7; -fx-background-radius: 7;">
          <children>
-            <Label layoutX="51.0" layoutY="18.0" text="Annuler">
+            <Label layoutX="51.0" layoutY="18.0" text="Annuler" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
          </children></Pane>
-      <Pane layoutX="379.0" layoutY="243.0" onMouseClicked="#onValideAction" prefHeight="65.0" prefWidth="180.0" style="-fx-background-color: #9A5ACCBF; -fx-border-color: BLACK; -fx-border-radius: 7; -fx-background-radius: 7;">
+      <Pane layoutX="379.0" layoutY="243.0" onMouseClicked="#onValideAction" prefHeight="65.0" prefWidth="180.0" style="-fx-background-color: #3F5A90; -fx-border-color: BLACK; -fx-border-radius: 7; -fx-background-radius: 7;">
          <children>
-            <Label layoutX="55.0" layoutY="17.0" text="Valider">
+            <Label layoutX="55.0" layoutY="17.0" text="Valider" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
