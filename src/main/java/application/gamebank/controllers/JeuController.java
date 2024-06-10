@@ -74,8 +74,7 @@ public class JeuController {
     @FXML
     void removeGameFromLibrary(MouseEvent event) {
         Main.accueilController.getGames().removeGame(game);
-        Scene thisScene = ((Pane) event.getSource()).getScene();
-        ((Stage) thisScene.getWindow()).setScene(Main.accueilController.getScene());
+        backToLastWindow(event);
         Main.accueilController.fillView();
     }
 

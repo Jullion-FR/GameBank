@@ -20,7 +20,7 @@ public class AccueilController extends gameViewer {
 
     @FXML
     private AnchorPane root;
-    Stage researchStage;
+    private Stage researchStage;
     private MyTags tags = new MyTags(); // Enregistre tout les tags dans un même objet
     private final Persistence persistence = new PersistenceBySerialization(games, tags);
 

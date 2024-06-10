@@ -7,21 +7,15 @@ public class Game implements Comparable<Game>, Serializable {
 
     private String name;
     private String imageURL;
-    private String description;
-    public Game(String name, String imageURL, String description){
+    private double rating;
+    private String releaseDate;
+
+    public Game(String name, String imageURL, double rating, String releaseDate){
         super();
-        ((name.charAt(0))+"").toUpperCase();
         this.name = name;
         this.imageURL = imageURL;
-        this.description = description;
-    }
-
-    public Game(String name, String imageURL) {
-        this(name, imageURL,"");
-    }
-
-    public Game() {
-        this("", null);
+        this.rating = rating;
+        this.releaseDate = releaseDate;
     }
 
     public String getName() {

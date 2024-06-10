@@ -63,7 +63,13 @@ public class APIManager {
             for (int i = 0; i < wanted ; i++) {
                 try {
                     Result gameResult = result.getResults()[i];
-                    games.addGame(new Game(gameResult.getName(), gameResult.getBackgroundImage()));
+                    games.addGame(new Game(
+                            gameResult.getName(),
+                            gameResult.getBackgroundImage(),
+                            gameResult.getRating(),
+                            gameResult.getReleaseDate()
+                            )
+                    );
                 }catch(Exception e){}
             }
 
