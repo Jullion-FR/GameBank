@@ -14,7 +14,7 @@
    <children>
       <AnchorPane prefHeight="75.0" prefWidth="947.0">
          <children>
-            <TextField fx:id="entry" layoutX="71.0" layoutY="14.0" onAction="#onAction" prefHeight="50.0" prefWidth="666.0" promptText="Rechercher un jeu" style="-fx-background-color: #3F5A90; -fx-text-fill: white;">
+            <TextField fx:id="entry" layoutX="71.0" layoutY="16.0" onAction="#onAction" prefHeight="45.0" prefWidth="666.0" promptText="Rechercher un jeu" style="-fx-background-color: #3F5A90; -fx-text-fill: white;">
                <font>
                   <Font size="20.0" />
                </font>

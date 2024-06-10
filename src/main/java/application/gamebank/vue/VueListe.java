@@ -42,6 +42,6 @@ public class VueListe  extends Vue{
     @Override
     void formatNameLabel(Label nameLabel) {
         nameLabel.setPadding(new Insets(0,0,0,10));
-        nameLabel.setStyle("-fx-font-size: 20px;");
+        nameLabel.setStyle("-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;");
     }
 }

@@ -13,7 +13,7 @@
    <children>
       <AnchorPane layoutX="-3.0" layoutY="491.0" prefHeight="179.0" prefWidth="713.0" style="-fx-border-color: black; -fx-border-width: 1 0 0 0;">
          <children>
-            <Circle fill="#3f5a90bf" layoutX="639.0" layoutY="88.0" radius="66.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#3f5a90bf" layoutX="639.0" layoutY="88.0" radius="45.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" />
             <Label fx:id="nom" layoutX="25.0" layoutY="14.0" prefHeight="74.0" prefWidth="535.0" text="Nom" wrapText="true">
                <font>
                   <Font size="40.0" />

@@ -51,14 +51,14 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="677.0" layoutY="31.0" onMouseClicked="#startResearch" prefHeight="45.0" prefWidth="169.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
+            <AnchorPane layoutX="643.0" layoutY="31.0" onMouseClicked="#startResearch" prefHeight="45.0" prefWidth="189.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
                <children>
                   <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/plus.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="54.0" layoutY="7.0" prefHeight="30.0" prefWidth="123.0" text="Nouveau jeu" textFill="WHITE">
+                  <Label layoutX="60.0" layoutY="7.0" prefHeight="30.0" prefWidth="123.0" text="Nouveau jeu" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
