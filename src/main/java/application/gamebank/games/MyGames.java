@@ -26,9 +26,6 @@ public class MyGames implements Serializable {
         allGames.remove(game);
     }
 
-    public void triAlphabetique() {
-        Collections.sort(allGames);
-    }
 
     @Override
     public String toString() {

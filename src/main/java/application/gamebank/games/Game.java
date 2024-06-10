@@ -6,10 +6,10 @@ import java.util.Objects;
 
 public class Game implements Comparable<Game>, Serializable {
 
-    private String name;
-    private String imageURL;
-    private double rating;
-    private String releaseDate;
+    private final String name;
+    private final String imageURL;
+    private final double rating;
+    private final String releaseDate;
 
     public Game(String name, String imageURL, double rating, String releaseDate){
         super();

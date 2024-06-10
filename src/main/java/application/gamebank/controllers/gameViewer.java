@@ -3,6 +3,8 @@ package application.gamebank.controllers;
 import application.gamebank.Main;
 import application.gamebank.games.Game;
 import application.gamebank.games.MyGames;
+import application.gamebank.tri.Tri;
+import application.gamebank.tri.TriParNom;
 import application.gamebank.vue.GameGrid;
 import application.gamebank.vue.Vue;
 import application.gamebank.vue.VueListe;
@@ -26,6 +28,8 @@ public abstract class gameViewer {
     protected Vue vueListe = new VueListe();
     protected GameGrid gameGrid = new GameGrid(vueMosaique);
     protected Vue vueActuelle = gameGrid.getVue();
+
+    protected Tri triActuel;
 
     protected Scene thisScene;
 
