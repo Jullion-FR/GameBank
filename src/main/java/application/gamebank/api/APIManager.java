@@ -27,11 +27,7 @@ public class APIManager {
     public MyGames setInformations( String searchedText, int wanted)  throws GameNotFoundException{
         MyGames games = new MyGames();
         String searchedEncoded = "";
-        try {
-            searchedEncoded = URLEncoder.encode(searchedText, StandardCharsets.UTF_8.toString());
-        } catch (UnsupportedEncodingException e2) {
-            e2.printStackTrace();
-        }
+        searchedEncoded = URLEncoder.encode(searchedText, StandardCharsets.UTF_8);
 
         HttpRequest request = HttpRequest.newBuilder()
                 //  https://rawg-video-games-database.p.rapidapi.com/games

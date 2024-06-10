@@ -2,12 +2,11 @@ package application.gamebank.games;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class MyGames implements Serializable {
 
-    private List<Game> allGames;
+    private final List<Game> allGames;
 
     public MyGames() {
         super();
@@ -26,13 +25,4 @@ public class MyGames implements Serializable {
         allGames.remove(game);
     }
 
-
-    @Override
-    public String toString() {
-        String result = "";
-        for (Game game : allGames) {
-            result += game.toString() +" ; ";
-        }
-        return result;
-    }
 }

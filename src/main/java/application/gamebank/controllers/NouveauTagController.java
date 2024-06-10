@@ -20,22 +20,26 @@ public class NouveauTagController {
     @FXML // Bouton de validation
     private Pane bouton_de_validation;
 
-    @FXML /** S'éxecute lors du chargement de cette fenêtre */
+    /** S'éxecute lors du chargement de cette fenêtre */
+    @FXML
     void initialize() {
         bouton_de_validation.setDisable(true);
     }
 
-    @FXML /** S'éxecute lors d'un clique sur le bouton valider*/
+    /** S'éxecute lors d'un clique sur le bouton valider*/
+    @FXML
     void boutonValiderNouveauTag(MouseEvent event) {
         quit(((Pane) event.getSource()).getScene());
     }
 
-    @FXML /** Mette a jour le fonctionnent du bouton de validation */
+    /** Mette a jour le fonctionnent du bouton de validation */
+    @FXML
     void updateValidationButton(KeyEvent event) {
         bouton_de_validation.setDisable(tagNameIsRight());
     }
 
-    @FXML /** Executer lors de la validation (exemple avec entrer) */
+    /** Executer lors de la validation (exemple avec entrer) */
+    @FXML
     void onValidationEvent(ActionEvent event) {
         quit(((TextField) event.getSource()).getScene());
     }

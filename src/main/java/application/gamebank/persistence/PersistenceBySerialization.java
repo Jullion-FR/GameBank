@@ -1,36 +1,90 @@
 package application.gamebank.persistence;
 
 import application.gamebank.games.MyGames;
-import application.gamebank.tags.ListeTags;
 import application.gamebank.tags.MyTags;
 
 import java.io.*;
 
 public class PersistenceBySerialization implements Persistence {
 
-    private static final String GAMES_FILE = "gamesSave";
-    private static final String TAGS_FILE = "tagsSave";
+    private static final String FILE_GAMES = "gameBankSaveGames.sv";
+    private static final String FILE_TAGS = "gameBankSaveTags.sv";
+
+
     private MyGames games;
     private MyTags tags;
 
     public PersistenceBySerialization(MyGames games, MyTags tags) {
         super();
-        this.games =games;
+        this.games = games;
         this.tags = tags;
     }
 
-    /** Enregistre les tags et les jeux données */
     @Override
     public void save() {
         saveGames();
         saveTags();
     }
 
-    /** Charge les tags et les jeux (accésible par getGames() et getTags() */
+    private void saveGames() {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILE_GAMES))) {
+            objectOutputStream.writeObject(games);
+            objectOutputStream.flush();
+            System.out.println("SAVE OK for games");
+        } catch (IOException e) {
+            System.err.println("Saving file error for games");
+        }
+    }
+
+    private void saveTags() {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILE_TAGS))) {
+            objectOutputStream.writeObject(tags);
+            objectOutputStream.flush();
+            System.out.println("SAVE OK for tags");
+        } catch (IOException e) {
+            System.err.println("Saving file error for tags");
+        }
+    }
+
     @Override
     public void load() {
         games = loadGames();
         tags = loadTags();
+    }
+
+    private MyTags loadTags() {
+        MyTags tags = null;
+
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILE_TAGS))) {
+            tags = (MyTags) input.readObject();
+            System.out.println("LOAD OK for tags");
+        } catch (IOException e) {
+            System.err.println("Save file does not exist for tags");
+            System.err.println("Creation of empty model for tags");
+            tags = new MyTags();
+        } catch (ClassNotFoundException e) {
+            System.err.println("Loading save file error for tags");
+            System.exit(-1);
+        }
+
+        return tags;
+    }
+
+    private MyGames loadGames() {
+        MyGames games = null;
+
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILE_GAMES))) {
+            games = (MyGames) input.readObject();
+            System.out.println("LOAD OK for games");
+        } catch (IOException e) {
+            System.err.println("Save file does not exist for games");
+            System.err.println("Creation of empty model for games");
+            games = new MyGames();
+        } catch (ClassNotFoundException e) {
+            System.err.println("Loading save file error for games");
+            System.exit(-1);
+        }
+        return games;
     }
 
     @Override
@@ -41,69 +95,5 @@ public class PersistenceBySerialization implements Persistence {
     @Override
     public MyTags getTags() {
         return tags;
-    }
-
-    /** Sauvegarde les Jeux présent dans la variable games */
-    public void saveGames() {
-        try {
-            save(GAMES_FILE, games);
-            System.out.println("Sauvegarde des Jeux éffectuée");
-        } catch (IOException e) {
-            System.err.println("La sauvegarde des Jeux à échouée");
-        }
-    }
-
-    /** Savegarde les tags présent dans la variable tags */
-    public void saveTags() {
-        try {
-            save(TAGS_FILE, tags);
-            System.out.println("Sauvegarde des tags éffectuée");
-        } catch (IOException e) {
-            System.err.println("La savegarde des Tags à échouée");
-        }
-    }
-
-    /** Renvoie un objet MyGames contenant les jeux de l'application */
-    public MyGames loadGames() {
-        MyGames games = null;
-        try {
-            games = (MyGames) load(GAMES_FILE);
-            System.out.println("Chargement des Jeux éffectuée");
-        } catch (IOException e) {
-            games = new MyGames();
-            System.out.println("Sauvegarde introuvable, création de nouveau conteneur");
-        } catch (ClassNotFoundException e) {
-            System.err.println("La Classe 'MyGames' n'a pas été trouver");
-            System.exit(-1);
-        }
-        return games;
-    }
-
-    /** Renvoie un objet MyTags contenant les tags de l'application */
-    public MyTags loadTags() {
-        MyTags tags = null;
-        try {
-            tags = (MyTags) load(TAGS_FILE);
-            System.out.println("Chargement des Tags éffectuée");
-        } catch (IOException e) {
-            tags = new MyTags();
-            System.out.println("Sauvegarde introuvable, création de nouveau conteneur");
-        } catch (ClassNotFoundException e) {
-            System.err.println("La Classe 'MyTags' n'a pas été trouver");
-            System.exit(-1);
-        }
-        return tags;
-    }
-
-    /** Renvoie le contenu d'un fichier de sauvegarde */
-    private Object load(String file_name) throws IOException, ClassNotFoundException {
-        return new ObjectInputStream(new FileInputStream(file_name)).readObject();
-    }
-
-    /** Enregistre un objet sous forme d'un fichier binaire */
-    private void save(String file_name, Object model) throws IOException {
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file_name));
-        objectOutputStream.writeObject(model);
-        objectOutputStream.flush();
     }
 }

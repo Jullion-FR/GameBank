@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Game implements Comparable<Game>, Serializable {
+    public class Game implements Comparable<Game>, Serializable {
 
     private final String name;
     private final String imageURL;

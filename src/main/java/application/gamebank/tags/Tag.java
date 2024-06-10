@@ -8,7 +8,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-public class Tag implements Comparable<Tag> {
+import java.io.Serializable;
+
+public class Tag implements Comparable<Tag>, Serializable {
+
+    public static final double HEIGHT = 32.0;
 
     private String nom;
 
@@ -16,24 +20,24 @@ public class Tag implements Comparable<Tag> {
         this.nom = nom;
     }
 
-    public static AnchorPane createTagPane(Tag tag) {
+    public AnchorPane createTagPane() {
         // Create AnchorPane
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setLayoutX(23.0);
         anchorPane.setLayoutY(95.0);
-        anchorPane.setPrefHeight(32.0);
+        anchorPane.setPrefHeight(HEIGHT);
         anchorPane.setPrefWidth(125.0);
         anchorPane.setStyle("-fx-background-color: black; -fx-background-radius: 7;");
 
         // Create Label
-        Label label = new Label(tag.nom);
+        Label label = new Label(this.nom);
         label.setLayoutX(32.0);
         label.setLayoutY(4.0);
         label.setTextFill(Color.WHITE);
         label.setFont(new Font(17.0));
 
         // Create ImageView
-        ImageView imageView = new ImageView(new Image(String.valueOf(Main.class.getResource("/images/tag.png"))));
+        ImageView imageView = new ImageView(new Image(Main.class.getResourceAsStream("images/tag.png")));
         imageView.setFitHeight(18.0);
         imageView.setFitWidth(18.0);
         imageView.setLayoutX(8.0);

@@ -13,7 +13,7 @@ import java.util.HexFormat;
 
 public class VueMosaique extends Vue{
     public static final int DEFAULT_MAX_GRID_LENGTH = 4;
-    private int maxSize = 175;
+    private final int maxSize = 175;
     public VueMosaique() {
         createGridElement();
     }

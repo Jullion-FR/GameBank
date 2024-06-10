@@ -9,26 +9,27 @@ import application.gamebank.tri.Tri;
 import application.gamebank.tri.TriParDate;
 import application.gamebank.tri.TriParNom;
 import application.gamebank.tri.TriParNotes;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class AccueilController extends gameViewer {
 
     @FXML
     private AnchorPane root;
+
+    @FXML
+    private VBox tagConteneur;
+
     @FXML
     private TextField gameFilterTextField;
     @FXML
@@ -49,6 +50,8 @@ public class AccueilController extends gameViewer {
         addEndEvent();
         initChoiceBox();
         fillView();
+
+        updateTags();
     }
 
     private void initChoiceBox() {
@@ -116,7 +119,7 @@ public class AccueilController extends gameViewer {
             if (newScene != null) {
                 newScene.windowProperty().addListener((observableWindow, oldWindow, newWindow) -> {
                     if (newWindow != null) {
-                        ((Stage) newWindow).setOnCloseRequest(event -> onWindowClosed());
+                        newWindow.setOnCloseRequest(event -> onWindowClosed());
                     }
                 });
             }
@@ -145,7 +148,16 @@ public class AccueilController extends gameViewer {
 
     /** Actualise l'affichage des tags dans la page d'accueil */
     private void updateTags() {
-        // TODO heu je suis perdu pour ça, au secours Julien
-        System.out.println(tags);
+        tagConteneur.getChildren().clear();
+
+        // redéfinition de la taille du conteneur
+        double n = tagConteneur.getSpacing();
+        int x = tags.nbTag();
+
+        tagConteneur.setPrefHeight(x*Tag.HEIGHT + (x-1)*n);
+
+        for (Tag tag: tags.getAllTags()) {
+            tagConteneur.getChildren().add(tag.createTagPane());
+        }
     }
 }

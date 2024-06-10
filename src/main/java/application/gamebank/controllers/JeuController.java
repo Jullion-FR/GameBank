@@ -91,7 +91,6 @@ public class JeuController {
 
     }
 
-
     void activateAddGamePane(){
         addGamePane.setDisable(false);
     }
@@ -105,7 +104,7 @@ public class JeuController {
         dropTagPane.setDisable(false);
     }
 
-    //Utilité des méthodes de deactivation à voir (ils commencent déjà desactivé)
+    // Utilité des méthodes de deactivation à voir (ils commencent déjà desactivé)
     void desactivateAddGamePane(){
         addGamePane.setDisable(true);
     }
