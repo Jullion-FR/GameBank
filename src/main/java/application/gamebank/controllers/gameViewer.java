@@ -40,7 +40,6 @@ public abstract class gameViewer {
             control.chargerJeu(game);
 
             if (this instanceof AccueilController) {
-                System.out.println("isAccueilController");
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.initOwner(thisScene.getWindow());
@@ -52,7 +51,6 @@ public abstract class gameViewer {
 
                 stage.showAndWait();
             } else {
-                System.out.println("isOtherController");
                 control.setLastScene(thisScene);
                 ((Stage) source.getScene().getWindow()).setScene(scene);
             }

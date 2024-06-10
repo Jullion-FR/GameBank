@@ -1,4 +1,3 @@
-
 package application.gamebank.tags;
 import java.util.ArrayList;
 

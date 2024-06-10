@@ -63,20 +63,22 @@ public class AccueilController extends gameViewer {
     }
 
     @FXML
-    RechercheController startResearch(MouseEvent event) {
+    void startResearch(MouseEvent event) {
         try {
-            Node source = (Node) event.getSource();
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/recherche.fxml"));
             Scene scene = new Scene(loader.load());
-            RechercheController control = loader.getController();
-            control.setScene(scene);
-            control.setLastScene(thisScene);
-            ((Stage) thisScene.getWindow()).setScene(scene);
-            return control;
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+    }
+
+    @Override
+    void fillView() {
+        games.triAlphabetique();
+        super.fillView();
     }
 
     @FXML

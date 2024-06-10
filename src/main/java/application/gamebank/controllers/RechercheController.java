@@ -16,7 +16,6 @@ public class RechercheController extends gameViewer {
     private TextField entry;
 
     private APIManager apiManager;
-    private Scene lastScene;
     @FXML
     public void initialize(){
         apiManager = new APIManager();
@@ -53,9 +52,6 @@ public class RechercheController extends gameViewer {
     void backToAccueil(MouseEvent event) {
         //Main.accueilController.fillView();
         ((Stage) thisScene.getWindow()).close();
-    }
-    public void setLastScene(Scene scene) {
-        this.lastScene = scene;
     }
 
 }
