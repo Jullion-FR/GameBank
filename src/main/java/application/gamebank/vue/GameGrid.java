@@ -19,8 +19,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class GameGrid {
-//    public static Vue VUE_MOSAIQUE = new VueMosaique();
-//    public static Vue VUE_LISTE = new VueListe();
     private Vue vue;
     private GridPane grid;
     public GameGrid(Vue defaultView) {

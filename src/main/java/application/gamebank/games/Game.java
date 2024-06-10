@@ -12,6 +12,7 @@ public class Game implements Comparable<Game>, Serializable {
     private final String releaseDate;
     private final Image image;
 
+
     public Game(String name, String image, double rating, String releaseDate){
         super();
         this.name = name;

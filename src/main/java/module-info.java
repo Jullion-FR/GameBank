@@ -4,6 +4,7 @@ module application.gamebank {
     requires com.fasterxml.jackson.core;
     requires java.net.http;
     requires com.fasterxml.jackson.databind;
+    requires java.desktop;
 
 
     opens application.gamebank to javafx.fxml, com.fasterxml.jackson.databind;
