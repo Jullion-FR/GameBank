@@ -20,7 +20,7 @@ public class AccueilController extends gameViewer {
 
     @FXML
     private AnchorPane root;
-
+    Stage researchStage;
     private MyTags tags = new MyTags(); // Enregistre tout les tags dans un même objet
     private final Persistence persistence = new PersistenceBySerialization(games, tags);
 
@@ -30,25 +30,15 @@ public class AccueilController extends gameViewer {
         tags = persistence.getTags();
         games = persistence.getGames();
         addEndEvent();
+        researchStage = new Stage();
         fillView();
     }
 
-    /** Ajoute un écouteur d'événement de fermeture à la fenêtre */
-    private void addEndEvent() {
-        root.sceneProperty().addListener((observable, oldScene, newScene) -> {
-            if (newScene != null) {
-                newScene.windowProperty().addListener((observableWindow, oldWindow, newWindow) -> {
-                    if (newWindow != null) {
-                        ((Stage) newWindow).setOnCloseRequest(event -> onWindowClosed());
-                    }
-                });
-            }
-        });
-    }
 
     /** Sauvegarde les jeux enregistrer */
     public void onWindowClosed() {
         persistence.save();
+        researchStage.close();
     }
 
     @Override
@@ -64,14 +54,18 @@ public class AccueilController extends gameViewer {
 
     @FXML
     void startResearch(MouseEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/recherche.fxml"));
-            Scene scene = new Scene(loader.load());
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!researchStage.isShowing()) {
+            try {
+                FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/recherche.fxml"));
+                Scene scene = new Scene(loader.load());
+                researchStage.setScene(scene);
+                researchStage.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else{
+            researchStage.toFront();
+            researchStage.requestFocus();
         }
     }
 
@@ -81,6 +75,18 @@ public class AccueilController extends gameViewer {
         super.fillView();
     }
 
+    /** Ajoute un écouteur d'événement de fermeture à la fenêtre */
+    private void addEndEvent() {
+        root.sceneProperty().addListener((observable, oldScene, newScene) -> {
+            if (newScene != null) {
+                newScene.windowProperty().addListener((observableWindow, oldWindow, newWindow) -> {
+                    if (newWindow != null) {
+                        ((Stage) newWindow).setOnCloseRequest(event -> onWindowClosed());
+                    }
+                });
+            }
+        });
+    }
     @FXML
     void createNewTag() {
 

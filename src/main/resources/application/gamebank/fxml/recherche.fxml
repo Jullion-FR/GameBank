@@ -34,7 +34,7 @@
                </image>
             </ImageView>
             <Separator layoutX="22.0" layoutY="68.0" prefHeight="1.0" prefWidth="789.0" />
-            <AnchorPane fx:id="backPane" focusTraversable="true" layoutX="822.0" layoutY="15.0" onMouseClicked="#backToAccueil" opacity="0.8" prefHeight="46.0" prefWidth="98.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
+            <AnchorPane fx:id="backPane" focusTraversable="true" layoutX="822.0" layoutY="15.0" onMouseClicked="#closeWindow" opacity="0.8" prefHeight="46.0" prefWidth="98.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
                <children>
                   <Label layoutX="11.0" layoutY="4.0" text="Retour" textFill="WHITE">
                      <font>

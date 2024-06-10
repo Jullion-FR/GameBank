@@ -1,6 +1,5 @@
 package application.gamebank.controllers;
 
-import application.gamebank.Main;
 import application.gamebank.api.APIManager;
 import application.gamebank.api.GameNotFoundException;
 import javafx.fxml.FXML;
@@ -49,9 +48,8 @@ public class RechercheController extends gameViewer {
         return control;
     }
     @FXML
-    void backToAccueil(MouseEvent event) {
-        //Main.accueilController.fillView();
-        ((Stage) thisScene.getWindow()).close();
+    void closeWindow(MouseEvent event) {
+        ((Stage) ((Scene) event.getSource()).getWindow()).close();
     }
 
 }
