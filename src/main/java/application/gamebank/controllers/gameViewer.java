@@ -3,8 +3,6 @@ package application.gamebank.controllers;
 import application.gamebank.Main;
 import application.gamebank.games.Game;
 import application.gamebank.games.MyGames;
-import application.gamebank.tri.Tri;
-import application.gamebank.tri.TriParNom;
 import application.gamebank.vue.GameGrid;
 import application.gamebank.vue.Vue;
 import application.gamebank.vue.VueListe;

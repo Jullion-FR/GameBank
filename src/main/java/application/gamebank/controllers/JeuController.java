@@ -1,12 +1,10 @@
 package application.gamebank.controllers;
 
 import application.gamebank.Main;
-import application.gamebank.api.APIManager;
 import application.gamebank.games.Game;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -76,9 +74,11 @@ public class JeuController {
             stage.setScene(lastScene);
         }else {stage.close();}
     }
+
     void setLastScene(Scene scene) {
         this.lastScene = scene;
     }
+
     @FXML
     void removeGameFromLibrary(MouseEvent event) {
         Main.accueilController.getGames().removeGame(game);
@@ -95,13 +95,16 @@ public class JeuController {
         addGamePane.setDisable(false);
         addGamePane.setOpacity(1);
     }
+
     void activateAddTagPane(){
         addTagPane.setDisable(false);
     }
+
     void activateDropGamePane(){
         dropGamePane.setDisable(false);
         dropGamePane.setOpacity(1);
     }
+
     void activateDropTagPane(){
         dropTagPane.setDisable(false);
     }
@@ -111,13 +114,16 @@ public class JeuController {
         addGamePane.setDisable(true);
         addGamePane.setOpacity(0.5);
     }
+
     void desactivateAddTagPane(){
         addTagPane.setDisable(true);
     }
+
     void desactivateDropGamePane(){
         dropGamePane.setDisable(true);
         dropGamePane.setOpacity(0.5);
     }
+
     void desactivateDropTagPane(){
         dropTagPane.setDisable(true);
     }

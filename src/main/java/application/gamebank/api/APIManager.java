@@ -1,7 +1,6 @@
 package application.gamebank.api;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
@@ -16,11 +15,6 @@ import application.gamebank.results.ResultGame;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-//import application.model.Game;
-//import application.pojo.Result;
-//import application.pojo.ResultGame;
-
 
 public class APIManager {
 
