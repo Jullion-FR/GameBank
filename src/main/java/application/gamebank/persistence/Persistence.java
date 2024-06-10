@@ -2,17 +2,18 @@ package application.gamebank.persistence;
 
 import application.gamebank.games.MyGames;
 import application.gamebank.tags.ListeTags;
+import application.gamebank.tags.MyTags;
 
 import java.io.IOException;
 
 public interface Persistence {
 
-    void saveGames(MyGames games);
+    void save();
 
-    void saveTags(ListeTags tags);
+    void load();
 
-    MyGames loadGames();
+    MyTags getTags();
 
-    ListeTags loadTags() throws IOException, ClassNotFoundException;
+    MyGames getGames();
 
 }

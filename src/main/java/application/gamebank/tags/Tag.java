@@ -58,4 +58,8 @@ public class Tag implements Comparable<Tag> {
     public int compareTo(Tag other) {
         return this.nom.compareTo(other.nom);
     }
+
+    public String toString() {
+        return nom;
+    }
 }

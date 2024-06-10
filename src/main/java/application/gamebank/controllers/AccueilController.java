@@ -1,56 +1,77 @@
 package application.gamebank.controllers;
 
 import application.gamebank.Main;
-import application.gamebank.games.Game;
-import application.gamebank.games.MyGames;
 import application.gamebank.persistence.Persistence;
 import application.gamebank.persistence.PersistenceBySerialization;
-import application.gamebank.tags.ListeTags;
+import application.gamebank.tags.MyTags;
 import application.gamebank.tags.Tag;
-import application.gamebank.vue.GameGrid;
-import application.gamebank.vue.Vue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 
 public class AccueilController extends gameViewer {
-    private ListeTags tags;
-    private Persistence persistence = new PersistenceBySerialization();
+
+    @FXML
+    private AnchorPane root;
+
+    private MyTags tags = new MyTags(); // Enregistre tout les tags dans un même objet
+    private final Persistence persistence = new PersistenceBySerialization(games, tags);
 
     @FXML
     public void initialize() {
-        games = persistence.loadGames();
-        //todo chargement sauvergarde
-        vueMosaique.setMaxGridLength(3);
+        persistence.load(); // Charge les données
+        tags = persistence.getTags();
+        games = persistence.getGames();
+        addEndEvent();
         fillView();
     }
 
+    /** Ajoute un écouteur d'événement de fermeture à la fenêtre */
+    private void addEndEvent() {
+        root.sceneProperty().addListener((observable, oldScene, newScene) -> {
+            if (newScene != null) {
+                newScene.windowProperty().addListener((observableWindow, oldWindow, newWindow) -> {
+                    if (newWindow != null) {
+                        ((Stage) newWindow).setOnCloseRequest(event -> onWindowClosed());
+                    }
+                });
+            }
+        });
+    }
+
+    /** Sauvegarde les jeux enregistrer */
+    public void onWindowClosed() {
+        persistence.save();
+    }
+
+    @Override
+    public JeuController openGameDetails(MouseEvent event) {
+        JeuController control = super.openGameDetails(event);
+        control.activateDropGamePane();
+        control.activateAddTagPane();
+        //if(games.getAllGames().get(Integer.parseInt(((Node) event.getSource()).getId())))
+        //todo voir si le jeu a au moins un tag
+        control.activateDropTagPane();
+        return control;
+    }
 
     @FXML
     RechercheController startResearch(MouseEvent event) {
         try {
-            Stage stage = new Stage();
+            Node source = (Node) event.getSource();
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/recherche.fxml"));
             Scene scene = new Scene(loader.load());
             RechercheController control = loader.getController();
             control.setScene(scene);
             control.setLastScene(thisScene);
-
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
+            ((Stage) thisScene.getWindow()).setScene(scene);
             return control;
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,14 +79,30 @@ public class AccueilController extends gameViewer {
         return null;
     }
 
-    @Override
-    void fillView() {
-        games.triAlphabetique();
-        super.fillView();
+    @FXML
+    void createNewTag() {
+
+        try {
+            Stage stage = new Stage();
+            FXMLLoader root = new FXMLLoader(Main.class.getResource("fxml/nouveauTag.fxml"));
+            stage.setScene(new Scene(root.load()));
+            stage.setTitle("Game Bank - new Tag");
+            stage.initModality(Modality.WINDOW_MODAL);
+
+            stage.showAndWait();
+            Tag tag = new Tag(((NouveauTagController) root.getController()).getTagName());
+            tags.addTag(tag);
+
+        } catch (IOException e) {
+            System.err.println("Une erreur est survenue");
+        }
+
+        updateTags();
     }
 
-    @FXML
-    void createNewTag(MouseEvent event) {
-
+    /** Actualise l'affichage des tags dans la page d'accueil */
+    private void updateTags() {
+        // TODO heu je suis perdu pour ça, au secours Julien
+        System.out.println(tags);
     }
 }

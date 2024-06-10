@@ -59,4 +59,9 @@ public class NouveauTagController {
     private boolean tagNameOversize() {
         return nom_du_tag.getText().length() > MAX_SIZE_TAG_NAME;
     }
+
+    /** Renvoie le contenu du TextField */
+    public String getTagName() {
+        return nom_du_tag.getText();
+    }
 }

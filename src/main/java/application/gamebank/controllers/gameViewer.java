@@ -13,12 +13,12 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public abstract class gameViewer {
+
     @FXML
     protected ScrollPane scrollPane;
     protected MyGames games = new MyGames();
@@ -39,7 +39,7 @@ public abstract class gameViewer {
             JeuController control = loader.getController();
             control.chargerJeu(game);
 
-            if (this instanceof AccueilController){
+            if (this instanceof AccueilController) {
                 System.out.println("isAccueilController");
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);
@@ -51,7 +51,7 @@ public abstract class gameViewer {
                 control.activateDropGamePane();
 
                 stage.showAndWait();
-            }else{
+            } else {
                 System.out.println("isOtherController");
                 control.setLastScene(thisScene);
                 ((Stage) source.getScene().getWindow()).setScene(scene);
@@ -63,8 +63,9 @@ public abstract class gameViewer {
         }
         return null;
     }
+
     @FXML
-    public void switchView(){
+    public void switchView() {
         if (vueActuelle instanceof VueMosaique) {
             vueActuelle = vueListe;
         } else {
@@ -88,13 +89,12 @@ public abstract class gameViewer {
         scrollPane.setContent(gameGrid.getGrid());
     }
 
+    public Scene getScene() {
+        return thisScene;
+    }
 
     public void setScene(Scene scene) {
         thisScene = scene;
-    }
-
-    public Scene getScene() {
-        return thisScene;
     }
 
     public MyGames getGames() {
