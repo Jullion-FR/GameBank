@@ -37,13 +37,13 @@ public class VueMosaique extends Vue{
     @Override
      void formatRoot(Pane root) {
         root.setPadding(new Insets(10));
-        root.setStyle("-fx-alignment: center;-fx-border-color: #9A5ACCBF;-fx-border-radius:7 ; -fx-border-width: 2px;");
+        root.setStyle("-fx-alignment: center;-fx-background-color:  #3F5A90;-fx-background-radius:10 ;");
     }
 
     @Override
     void formatNameLabel(Label nameLabel) {
         nameLabel.setMaxWidth(maxSize);
-        nameLabel.setStyle("-fx-alignment: center; -fx-text-overrun: ellipsis; -fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: 'Arial'; -fx-padding: 5px;");
+        nameLabel.setStyle("-fx-alignment: center; -fx-text-overrun: ellipsis;");
     }
 
 }

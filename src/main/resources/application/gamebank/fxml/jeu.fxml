@@ -9,11 +9,11 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="662.0" prefWidth="964.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.gamebank.controllers.JeuController">
+<AnchorPane prefHeight="662.0" prefWidth="964.0" style="-fx-border-color: black; -fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.gamebank.controllers.JeuController">
    <children>
       <AnchorPane layoutX="-3.0" layoutY="491.0" prefHeight="179.0" prefWidth="713.0" style="-fx-border-color: black; -fx-border-width: 1 0 0 0;">
          <children>
-            <Circle fill="#9a5cccbf" layoutX="620.0" layoutY="68.0" radius="45.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#3f5a90bf" layoutX="620.0" layoutY="68.0" radius="45.0" stroke="BLACK" strokeType="INSIDE" />
             <Label fx:id="nom" layoutX="25.0" layoutY="14.0" prefHeight="74.0" prefWidth="686.0" text="Nom" wrapText="true">
                <font>
                   <Font size="40.0" />
@@ -22,6 +22,11 @@
             <Label fx:id="labelNote" layoutX="596.0" layoutY="54.0" prefHeight="29.0" prefWidth="52.0" text="4 / 5">
                <font>
                   <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="nom1" layoutX="25.0" layoutY="75.0" prefHeight="74.0" prefWidth="539.0" text="Date de sortie:" wrapText="true">
+               <font>
+                  <Font size="25.0" />
                </font>
             </Label>
          </children>
@@ -33,16 +38,16 @@
       </ImageView>
       <AnchorPane layoutX="709.0" prefHeight="670.0" prefWidth="255.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;">
          <children>
-            <AnchorPane fx:id="dropGamePane" disable="true" layoutX="20.0" layoutY="561.0" onMouseClicked="#removeGameFromLibrary" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane fx:id="dropGamePane" disable="true" layoutX="20.0" layoutY="561.0" onMouseClicked="#removeGameFromLibrary" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
                <children>
-                  <Label layoutX="27.0" layoutY="6.0" prefHeight="27.0" prefWidth="155.0" text="Suprimer le jeu" textFill="WHITE">
+                  <Label layoutX="27.0" layoutY="6.0" prefHeight="35.0" prefWidth="167.0" text="Suprimer le jeu" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="addTagPane" disable="true" layoutX="14.0" layoutY="14.0" onMouseClicked="#addTagToGame" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane fx:id="addTagPane" disable="true" layoutX="14.0" layoutY="14.0" onMouseClicked="#addTagToGame" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="49.0" pickOnBounds="true">
                      <image>
@@ -51,7 +56,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="dropTagPane" disable="true" layoutX="193.0" layoutY="14.0" opacity="0.6" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane fx:id="dropTagPane" disable="true" layoutX="193.0" layoutY="14.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="3.0" layoutY="1.0" pickOnBounds="true">
                      <image>
@@ -60,18 +65,18 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="addGamePane" disable="true" focusTraversable="true" layoutX="20.0" layoutY="503.0" onMouseClicked="#addGameToLibrary" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane fx:id="addGamePane" disable="true" focusTraversable="true" layoutX="20.0" layoutY="503.0" onMouseClicked="#addGameToLibrary" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
                <children>
-                  <Label layoutX="40.0" layoutY="4.0" prefHeight="27.0" prefWidth="130.0" text="Ajouter le jeu" textFill="WHITE">
+                  <Label layoutX="40.0" layoutY="4.0" prefHeight="35.0" prefWidth="156.0" text="Ajouter le jeu" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="backPane" focusTraversable="true" layoutX="20.0" layoutY="619.0" onMouseClicked="#backToLastWindow" opacity="0.8" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane fx:id="backPane" focusTraversable="true" layoutX="20.0" layoutY="619.0" onMouseClicked="#backToLastWindow" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
                <children>
-                  <Label layoutX="70.0" layoutY="5.0" prefHeight="29.0" prefWidth="70.0" text="Retour" textFill="WHITE">
+                  <Label layoutX="70.0" layoutY="5.0" prefHeight="35.0" prefWidth="82.0" text="Retour" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>

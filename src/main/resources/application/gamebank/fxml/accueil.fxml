@@ -17,7 +17,7 @@
                   <Font size="20.0" />
                </font>
             </TextField>
-            <AnchorPane layoutX="217.0" layoutY="28.0" onMouseClicked="#createNewTag" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane layoutX="217.0" layoutY="28.0" onMouseClicked="#createNewTag" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
                <children>
                   <ImageView fitHeight="45.0" fitWidth="45.0" onMouseClicked="#startResearch" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -35,7 +35,7 @@
                   <Font size="20.0" />
                </font>
             </TextField>
-            <AnchorPane layoutX="746.0" layoutY="28.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane layoutX="746.0" layoutY="28.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
                <children>
                   <ImageView fx:id="imageVue" fitHeight="45.0" fitWidth="45.0" onMouseClicked="#switchView" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -44,7 +44,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="814.0" layoutY="28.0" onMouseClicked="#startResearch" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane layoutX="814.0" layoutY="28.0" onMouseClicked="#startResearch" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
                <children>
                   <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
