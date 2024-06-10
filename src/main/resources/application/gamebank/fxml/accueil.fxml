@@ -31,7 +31,7 @@
       </AnchorPane>
       <AnchorPane layoutX="276.0" layoutY="-1.0" prefHeight="107.0" prefWidth="868.0" style="-fx-border-color: black;">
          <children>
-            <TextField fx:id="gameFilterTextField" layoutX="59.0" layoutY="30.0" prefHeight="50.0" prefWidth="242.0" promptText="Rechercher un jeu">
+            <TextField fx:id="gameFilterTextField" layoutX="59.0" layoutY="30.0" onAction="#filterGames" prefHeight="50.0" prefWidth="242.0" promptText="Rechercher un jeu">
                <font>
                   <Font size="20.0" />
                </font>
@@ -60,7 +60,7 @@
                </children>
             </AnchorPane>
             <ChoiceBox fx:id="triChoiceBox" layoutX="373.0" layoutY="32.0" prefHeight="44.0" prefWidth="175.0" style="-fx-font-size: 16px;" />
-            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="33.0" onMouseClicked="#filterGames" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/loupe.png" />
                </image>

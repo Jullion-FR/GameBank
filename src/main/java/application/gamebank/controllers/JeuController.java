@@ -47,7 +47,7 @@ public class JeuController {
         this.game = gameToLoad;
         System.out.println("Chargement de : "+game);
         nom.setText(game.getName());
-        image.setImage(new Image(game.getImageURL()));
+        image.setImage(game.getImage());
         noteLabel.setText(game.getRating() + " / 5");
         dateSortieLabel.setText(game.getReleaseDate());
     }
