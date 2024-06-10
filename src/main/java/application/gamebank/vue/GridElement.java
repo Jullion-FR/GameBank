@@ -14,7 +14,7 @@ public class GridElement {
     private final Pane root;
     private ImageView gameImageHolder;
     private Label nameHolder;
-
+    private Label gameRating;
     public GridElement(Pane element) {
         this.root = element;
     }
@@ -92,36 +92,22 @@ public class GridElement {
         return nameHolder;
     }
 
-    public void setNameHolder(Label nameHolder) {
-        if (this.nameHolder != null) {
-            root.getChildren().set(root.getChildren().indexOf(this.nameHolder), nameHolder);
-            this.nameHolder = nameHolder;
-        }else {
-            throw new UnsupportedOperationException("Special Item not initialized");
-        }
-
-    }
-
-    public void setGameImageHolder(ImageView gameImageHolder) {
-        if (this.gameImageHolder != null) {
-            root.getChildren().set(root.getChildren().indexOf(this.gameImageHolder), gameImageHolder);
-            this.gameImageHolder = gameImageHolder;
-        }else {
-            throw new UnsupportedOperationException("Special Item not initialized");
-        }
-    }
     public void addNameHolder(Label nameHolder) {
-        if (this.nameHolder == null) {
-            this.nameHolder = nameHolder;
-            add(nameHolder);
-        }else {
-            throw new UnsupportedOperationException("Special Item already initialized");
-        }
+        this.nameHolder = nameHolder;
+        add(nameHolder);
     }
     public void addGameImageHolder(ImageView gameImageHolder)  {
         if (this.gameImageHolder == null) {
             this.gameImageHolder = gameImageHolder;
             add(gameImageHolder);
+        }else {
+            throw new UnsupportedOperationException("Special Item already initialized");
+        }
+    }
+    public void addGameRating(Label gameRating) {
+        if (this.gameRating == null) {
+            this.gameRating = gameRating;
+            add(gameRating);
         }else {
             throw new UnsupportedOperationException("Special Item already initialized");
         }

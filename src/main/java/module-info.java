@@ -15,4 +15,5 @@ module application.gamebank {
     exports application.gamebank.results;
     opens application.gamebank.results to com.fasterxml.jackson.databind, javafx.fxml;
     exports application.gamebank.games;
+    exports application.gamebank.vue;
 }

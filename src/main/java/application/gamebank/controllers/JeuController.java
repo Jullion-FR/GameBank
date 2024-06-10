@@ -52,6 +52,9 @@ public class JeuController {
         dateSortieLabel.setText(game.getReleaseDate());
     }
 
+    public Game getGame() {
+        return game;
+    }
 
     @FXML
     void addGameToLibrary(MouseEvent event) {

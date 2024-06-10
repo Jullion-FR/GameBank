@@ -1,5 +1,6 @@
 package application.gamebank.controllers;
 
+import application.gamebank.Main;
 import application.gamebank.api.APIManager;
 import application.gamebank.api.GameNotFoundException;
 import javafx.fxml.FXML;
@@ -44,12 +45,14 @@ public class RechercheController extends gameViewer {
     @Override
     public JeuController openGameDetails(MouseEvent event){
         JeuController control = super.openGameDetails(event);
-        control.activateAddGamePane();
+        if (Main.accueilController.games.getAllGames().contains(control.getGame())) {
+            control.activateDropGamePane();
+        }else{control.activateAddGamePane();}
         return control;
     }
     @FXML
     void closeWindow(MouseEvent event) {
-        ((Stage) ((Scene) event.getSource()).getWindow()).close();
+        ((Stage) thisScene.getWindow()).close();
     }
 
 }
