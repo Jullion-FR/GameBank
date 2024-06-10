@@ -19,7 +19,7 @@
                   <Font size="40.0" />
                </font>
             </Label>
-            <Label fx:id="noteLabel" alignment="CENTER" layoutX="585.0" layoutY="72.0" prefHeight="35.0" prefWidth="108.0" text="5.00 / 5">
+            <Label fx:id="noteLabel" alignment="CENTER" layoutX="585.0" layoutY="72.0" prefHeight="35.0" prefWidth="108.0" text="5.00 / 5" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -70,7 +70,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="addGamePane" disable="true" focusTraversable="true" layoutX="20.0" layoutY="503.0" onMouseClicked="#addGameToLibrary" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
+            <AnchorPane fx:id="addGamePane" disable="true" focusTraversable="true" layoutX="20.0" layoutY="505.0" onMouseClicked="#addGameToLibrary" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
                <children>
                   <Label alignment="CENTER" layoutX="27.0" layoutY="3.0" prefHeight="35.0" prefWidth="156.0" text="Ajouter le jeu" textFill="WHITE">
                      <font>
@@ -79,7 +79,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="backPane" focusTraversable="true" layoutX="20.0" layoutY="619.0" onMouseClicked="#backToLastWindow" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
+            <AnchorPane fx:id="backPane" focusTraversable="true" layoutX="20.0" layoutY="616.0" onMouseClicked="#backToLastWindow" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
                <children>
                   <Label alignment="CENTER" layoutX="64.0" layoutY="3.0" prefHeight="35.0" prefWidth="82.0" text="Retour" textFill="WHITE">
                      <font>
