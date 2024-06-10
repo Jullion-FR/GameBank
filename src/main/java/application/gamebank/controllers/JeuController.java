@@ -94,12 +94,14 @@ public class JeuController {
 
     void activateAddGamePane(){
         addGamePane.setDisable(false);
+        addGamePane.setOpacity(1);
     }
     void activateAddTagPane(){
         addTagPane.setDisable(false);
     }
     void activateDropGamePane(){
         dropGamePane.setDisable(false);
+        dropGamePane.setOpacity(1);
     }
     void activateDropTagPane(){
         dropTagPane.setDisable(false);
@@ -108,12 +110,14 @@ public class JeuController {
     //Utilité des méthodes de deactivation à voir (ils commencent déjà desactivé)
     void desactivateAddGamePane(){
         addGamePane.setDisable(true);
+        addGamePane.setOpacity(0.5);
     }
     void desactivateAddTagPane(){
         addTagPane.setDisable(true);
     }
     void desactivateDropGamePane(){
         dropGamePane.setDisable(true);
+        dropGamePane.setOpacity(0.5);
     }
     void desactivateDropTagPane(){
         dropTagPane.setDisable(true);

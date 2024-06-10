@@ -43,7 +43,7 @@ public class VueMosaique extends Vue{
     @Override
     void formatNameLabel(Label nameLabel) {
         nameLabel.setMaxWidth(maxSize);
-        nameLabel.setStyle("-fx-alignment: center; -fx-text-overrun: ellipsis;");
+        nameLabel.setStyle("-fx-alignment: center; -fx-text-overrun: ellipsis; -fx-text-fill:white;");
     }
 
 }
