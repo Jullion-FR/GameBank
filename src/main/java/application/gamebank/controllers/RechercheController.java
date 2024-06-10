@@ -4,6 +4,7 @@ import application.gamebank.Main;
 import application.gamebank.api.APIManager;
 import application.gamebank.api.GameNotFoundException;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -26,7 +27,10 @@ public class RechercheController extends gameViewer {
 
         if (searchedText.isBlank())
             return;
+
         System.out.println("Recherche en cours...");
+        thisScene.setCursor(Cursor.WAIT);
+
         entry.clear();
         try {
             games = apiManager.setInformations(searchedText, vueActuelle.getMaxGridLength()*4);
@@ -39,7 +43,9 @@ public class RechercheController extends gameViewer {
         }
 
         fillView();
+
         System.out.println("Done.");
+        thisScene.setCursor(Cursor.DEFAULT);
     }
 
     @Override

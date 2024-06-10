@@ -19,8 +19,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class GameGrid {
-//    public static Vue VUE_MOSAIQUE = new VueMosaique();
-//    public static Vue VUE_LISTE = new VueListe();
     private Vue vue;
     private GridPane grid;
     public GameGrid(Vue defaultView) {
@@ -59,7 +57,7 @@ public class GameGrid {
             String name = game.getName();
             Image img;
             try {
-                img = new Image(game.getImageURL());
+                img = game.getImage();
             }catch (Exception e) {
                 img = new Image(String.valueOf(Main.class.getResource("images/mosaique.png")));
             }

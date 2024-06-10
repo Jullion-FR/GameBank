@@ -1,20 +1,22 @@
 package application.gamebank.games;
 
+import javafx.scene.image.Image;
+
 import java.io.Serializable;
-import java.util.Comparator;
 import java.util.Objects;
 
     public class Game implements Comparable<Game>, Serializable {
 
     private final String name;
-    private final String imageURL;
     private final double rating;
     private final String releaseDate;
+    private final Image image;
 
-    public Game(String name, String imageURL, double rating, String releaseDate){
+
+    public Game(String name, String image, double rating, String releaseDate){
         super();
         this.name = name;
-        this.imageURL = imageURL;
+        this.image = new Image(image);
         this.rating = rating;
         this.releaseDate = releaseDate;
     }
@@ -22,9 +24,8 @@ import java.util.Objects;
     public String getName() {
         return name;
     }
-
-    public String getImageURL() {
-        return imageURL;
+    public Image getImage() {
+        return image;
     }
     public double getRating() {return rating;}
     public String getReleaseDate() {return releaseDate;}

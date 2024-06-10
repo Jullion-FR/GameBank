@@ -27,7 +27,7 @@ public class Tag implements Comparable<Tag>, Serializable {
         anchorPane.setLayoutY(95.0);
         anchorPane.setPrefHeight(HEIGHT);
         anchorPane.setPrefWidth(125.0);
-        anchorPane.setStyle("-fx-background-color: black; -fx-background-radius: 7;");
+        anchorPane.setStyle("-fx-background-color:  #3F5A90; -fx-background-radius: 7;");
 
         // Create Label
         Label label = new Label(this.nom);
