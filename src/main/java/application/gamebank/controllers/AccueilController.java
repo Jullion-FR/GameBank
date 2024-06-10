@@ -5,22 +5,37 @@ import application.gamebank.persistence.Persistence;
 import application.gamebank.persistence.PersistenceBySerialization;
 import application.gamebank.tags.MyTags;
 import application.gamebank.tags.Tag;
+import application.gamebank.tri.Tri;
+import application.gamebank.tri.TriParDate;
+import application.gamebank.tri.TriParNom;
+import application.gamebank.tri.TriParNotes;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class AccueilController extends gameViewer {
 
     @FXML
     private AnchorPane root;
+    @FXML
+    private TextField gameFilterTextField;
+    @FXML
+    private ChoiceBox<String> triChoiceBox;
     private Stage researchStage;
+
+    private Tri triSelectioner;
     private MyTags tags = new MyTags(); // Enregistre tout les tags dans un même objet
     private final Persistence persistence = new PersistenceBySerialization(games, tags);
 
@@ -29,9 +44,27 @@ public class AccueilController extends gameViewer {
         persistence.load(); // Charge les données
         tags = persistence.getTags();
         games = persistence.getGames();
-        addEndEvent();
         researchStage = new Stage();
+        triSelectioner = new TriParNom();
+        addEndEvent();
+        initChoiceBox();
         fillView();
+    }
+
+    private void initChoiceBox() {
+        triChoiceBox.getItems().add("Titre");
+        triChoiceBox.getItems().add("Date de sortie");
+        triChoiceBox.getItems().add("Note");
+        triChoiceBox.getSelectionModel().select(0);
+
+        triChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            switch (newValue) {
+                case "Titre" -> triSelectioner = new TriParNom();
+                case "Date de sortie" -> triSelectioner = new TriParDate();
+                case "Note" -> triSelectioner = new TriParNotes();
+            }
+            fillView();
+        });
     }
 
 
@@ -73,7 +106,7 @@ public class AccueilController extends gameViewer {
 
     @Override
     void fillView() {
-        games.triAlphabetique();//faire des classes tri avec interface
+        triSelectioner.tri(games);//faire des classes tri avec interface
         super.fillView();
     }
 

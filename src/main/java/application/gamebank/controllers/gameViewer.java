@@ -29,8 +29,6 @@ public abstract class gameViewer {
     protected GameGrid gameGrid = new GameGrid(vueMosaique);
     protected Vue vueActuelle = gameGrid.getVue();
 
-    protected Tri triActuel;
-
     protected Scene thisScene;
 
     public JeuController openGameDetails(MouseEvent event) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -30,36 +31,41 @@
       </AnchorPane>
       <AnchorPane layoutX="276.0" layoutY="-1.0" prefHeight="107.0" prefWidth="868.0" style="-fx-border-color: black;">
          <children>
-            <TextField layoutX="64.0" layoutY="26.0" prefHeight="50.0" prefWidth="242.0" promptText="Rechercher un jeu">
+            <TextField fx:id="gameFilterTextField" layoutX="59.0" layoutY="30.0" prefHeight="50.0" prefWidth="242.0" promptText="Rechercher un jeu">
                <font>
                   <Font size="20.0" />
                </font>
             </TextField>
-            <AnchorPane layoutX="746.0" layoutY="28.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane layoutX="566.0" layoutY="31.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
                <children>
-                  <ImageView fitHeight="45.0" fitWidth="45.0" onMouseClicked="#switchView" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="45.0" fitWidth="88.0" onMouseClicked="#switchView" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/mosaique.png" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="814.0" layoutY="28.0" onMouseClicked="#startResearch" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
+            <AnchorPane layoutX="677.0" layoutY="31.0" onMouseClicked="#startResearch" prefHeight="45.0" prefWidth="169.0" style="-fx-background-color: #9A5ACCBF; -fx-background-radius: 7;">
                <children>
                   <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/plus.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="54.0" layoutY="7.0" prefHeight="30.0" prefWidth="123.0" text="Nouveau jeu" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
-            <ChoiceBox layoutX="373.0" layoutY="25.0" prefHeight="50.0" prefWidth="342.0" />
-            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+            <ChoiceBox fx:id="triChoiceBox" layoutX="373.0" layoutY="32.0" prefHeight="44.0" prefWidth="175.0" style="-fx-font-size: 16px;" />
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/loupe.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="328.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="328.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/filtre.png" />
                </image>
