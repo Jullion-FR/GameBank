@@ -13,6 +13,7 @@ import application.gamebank.tri.TriParNotes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -55,10 +56,10 @@ public class AccueilController extends gameViewer {
         games = persistence.getGames();
         researchStage = new Stage();
         triSelectioner = new TriParNom();
+        vueListe.setMaxViewWidth(800);
         addEndEvent();
         initChoiceBox();
         fillView();
-
         updateTags();
     }
 
