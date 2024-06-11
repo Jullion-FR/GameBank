@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="244.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.gamebank.controllers.AddTagController">
+   <children>
+      <Label layoutX="16.0" layoutY="20.0" text="Ajouter un tag">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="59.0" text="Selectionner le tag à ajouter">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="liste_tags" layoutX="16.0" layoutY="105.0" prefHeight="47.0" prefWidth="611.0" />
+      <Pane fx:id="bouton_de_validation" layoutX="479.0" layoutY="159.0" onMouseClicked="#boutonValiderAddTag" prefHeight="54.0" prefWidth="146.0" style="-fx-background-radius: 7; -fx-background-color: #3F5A90; -fx-border-color: #000000; -fx-border-radius: 7;">
+         <children>
+            <Label layoutX="38.0" layoutY="13.0" style="-fx-text-fill: white;" text="Valider" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

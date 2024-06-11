@@ -5,6 +5,7 @@ import application.gamebank.games.Game;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -64,6 +65,8 @@ public class Tag implements Comparable<Tag>, Serializable {
 
         // Add Label and ImageView to AnchorPane
         anchorPane.getChildren().addAll(label, imageView);
+
+//        anchorPane.setOnMouseClicked(this::onClicked);
 
         return anchorPane;
     }

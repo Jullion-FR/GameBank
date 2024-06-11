@@ -34,4 +34,14 @@ public class MyTags implements Serializable {
         return txt;
     }
 
+    public Tag getTagByName(String name) {
+        for (Tag tag : tags) {
+            System.out.println(tag + "== " + name);
+            if (tag.toString().equals(name)) {
+                return tag;
+            }
+        }
+        return null;
+    }
+
 }

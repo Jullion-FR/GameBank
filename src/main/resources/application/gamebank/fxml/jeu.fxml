@@ -62,9 +62,9 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="dropTagPane" disable="true" layoutX="193.0" layoutY="14.0" opacity="0.5" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
+            <AnchorPane fx:id="dropTagPane" disable="true" layoutX="193.0" layoutY="14.0" onMouseClicked="#removeTagFromGame" opacity="0.5" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #3F5A90; -fx-background-radius: 7;">
                <children>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="3.0" layoutY="1.0" pickOnBounds="true">
+                  <ImageView id="off" fitHeight="50.0" fitWidth="50.0" layoutX="3.0" layoutY="1.0" pickOnBounds="true">
                      <image>
                         <Image url="@../images/moin.png" />
                      </image>
