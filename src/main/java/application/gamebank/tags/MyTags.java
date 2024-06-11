@@ -1,5 +1,7 @@
 package application.gamebank.tags;
 
+import application.gamebank.games.Game;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +46,22 @@ public class MyTags implements Serializable {
         return null;
     }
 
+    /*public void delTag(Tag tag) {
+        tag.delGame(game);
+        tags.remove(tag);
+
+    }*/
+
     public void delTag(Tag tag) {
+        // Parcourir tous les jeux rattachés à ce tag
+        for (Game game : new ArrayList<>(tag.games)) {
+            // Supprimer le tag du jeu
+            game.removeTag(tag);
+            // Supprimer le jeu de la liste des jeux rattachés au tag
+            tag.delGame(game);
+        }
+
+        // Finalement, supprimer le tag de la liste des tags
         tags.remove(tag);
     }
 

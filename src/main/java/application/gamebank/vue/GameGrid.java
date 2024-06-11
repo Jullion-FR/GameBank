@@ -22,10 +22,13 @@ import javax.swing.plaf.synth.Region;
 public class GameGrid {
     private Vue vue;
     private GridPane grid;
+
+
     public GameGrid(Vue defaultView) {
         vue = defaultView;
         resetGrid();
     }
+
     public void resetGrid() {
         grid = new GridPane();
         grid.setGridLinesVisible(false);
@@ -33,13 +36,16 @@ public class GameGrid {
         grid.setHgap(10);
         grid.setVgap(10);
     }
+
     public void applyPadding(double haut, double droite, double bas, double gauche){
         Insets inset = new Insets(haut,droite,bas,gauche);
         grid.setPadding(inset);
     }
+
     public void applyPadding(double value){
         applyPadding(value, value, value, value);
     }
+
     public GridPane getGrid() {
         return grid;
     }

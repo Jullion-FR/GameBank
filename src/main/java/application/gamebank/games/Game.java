@@ -104,4 +104,8 @@ public class Game implements Comparable<Game>, Serializable {
     public int hashCode() {
         return Objects.hash(name, rating, releaseDate);
     }
+
+    public void removeTag(Tag tag) {
+        tags.remove(tag);
+    }
 }

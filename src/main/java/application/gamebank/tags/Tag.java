@@ -20,7 +20,7 @@ public class Tag implements Comparable<Tag>, Serializable {
     public static final double HEIGHT = 32.0;
 
     private String nom;
-    private List<Game> games;
+    public List<Game> games;
 
     public Tag(String nom) {
         this.nom = nom;
