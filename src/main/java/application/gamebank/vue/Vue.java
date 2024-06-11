@@ -26,10 +26,20 @@ public abstract class Vue {
     abstract void formatRoot(Pane root) ;
     abstract void formatNameLabel(Label nameLabel);
 
+    protected int maxViewWidth = 875;
+
     protected void formatAll(Pane root, ImageView imageView, Label nameLabel) {
         formatGameImageView(imageView);
         formatNameLabel(nameLabel);
         formatRoot(root);
+    }
+
+    public int getMaxViewWidth() {
+        return maxViewWidth;
+    }
+
+    public void setMaxViewWidth(int maxViewWidth) {
+        this.maxViewWidth = maxViewWidth;
     }
 
 }

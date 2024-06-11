@@ -18,7 +18,11 @@ public class Game implements Comparable<Game>, Serializable {
 
     public Game(String name, String imageURL, double rating, String releaseDate) {
         this.name = name;
-        this.imageURL = imageURL;
+        if (imageURL == null || imageURL.isEmpty() || imageURL.isBlank())
+            this.imageURL = String.valueOf(Main.class.getResource("images/mosaique.png"));
+        else
+            this.imageURL = imageURL;
+
         this.rating = rating;
         this.releaseDate = releaseDate;
         setImage(imageURL);
