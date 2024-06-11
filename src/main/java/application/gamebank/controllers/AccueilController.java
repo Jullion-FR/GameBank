@@ -45,10 +45,11 @@ public class AccueilController extends gameViewer {
     private ChoiceBox<String> triChoiceBox;
 
     private Stage researchStage;
-    private MyGames gamesSave;
+    private MyGames gamesSave, gameForTagSave;
     private Tri triSelectioner;
     private final Persistence persistence;
     private Tag tagSelect;
+    private AnchorPane glowingTagPane;
 
     public AccueilController(){
         super();
@@ -96,6 +97,7 @@ public class AccueilController extends gameViewer {
         if (filterText.isBlank() && gamesSave != null) {
             // Restaurer l'état initial des jeux
             games = gamesSave;
+            gamesSave = null;
             fillView();
         } else {
             // Sauvegarder l'état initial des jeux seulement si gamesSave est null
@@ -225,9 +227,9 @@ public class AccueilController extends gameViewer {
     }
 
     void onTagCliked(MouseEvent event) {
-
-        // Définie le tag selectionner
-        for (Node n : ((AnchorPane) event.getSource()).getChildren()) {
+        AnchorPane pane = ((AnchorPane) event.getSource());
+        // Définie le tag selectionné
+        for (Node n : pane.getChildren()) {
             if (n instanceof Label) {
                 tagSelect = tags.getTagByName(((Label) n).getText());
             }
@@ -236,10 +238,37 @@ public class AccueilController extends gameViewer {
         if (event.getButton() == MouseButton.SECONDARY) {
             contextMenu.show(root, event.getScreenX(), event.getScreenY());
         } else if (event.getButton() == MouseButton.PRIMARY) {
-            // TODO affiche les jeux ayant ce tag
+
+            //Affichage jeux ayant le tag
+            if (gameForTagSave != null) {
+                // Restaurer l'état initial des jeux
+                games = gameForTagSave;
+                gameForTagSave = null;
+                glowingTagPane.setOpacity(1);
+            }
+            else {
+                // Sauvegarder l'état initial des jeux seulement si gamesSave est null
+                gameForTagSave = new MyGames();
+                for (Game game : games.getAllGames()) {
+                    gameForTagSave.addGame(game);
+                }
+
+                MyGames filteredGames = new MyGames();
+                for (Game game : games.getAllGames()) {
+                    if (game.getAllTags().contains(tagSelect)) {
+                        filteredGames.addGame(game);
+                    }
+                }
+                games = filteredGames;
+                glowingTagPane = pane;
+                glowingTagPane.setOpacity(0.5);
+            }
+            fillView();
         } else {
             contextMenu.hide();
         }
+
+
     }
 
     public MyTags getTags() {
