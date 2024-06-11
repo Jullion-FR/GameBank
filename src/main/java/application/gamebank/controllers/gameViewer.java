@@ -21,13 +21,20 @@ public abstract class gameViewer {
 
     @FXML
     protected ScrollPane scrollPane;
-    protected MyGames games = new MyGames();
-    protected Vue vueMosaique = new VueMosaique();
-    protected Vue vueListe = new VueListe();
-    protected GameGrid gameGrid = new GameGrid(vueMosaique);
-    protected Vue vueActuelle = gameGrid.getVue();
-
+    protected MyGames games;
+    protected Vue vueMosaique;
+    protected Vue vueListe;
+    protected GameGrid gameGrid;
+    protected Vue vueActuelle ;
     protected Scene thisScene;
+
+    public gameViewer(){
+        games = new MyGames();
+        vueMosaique = new VueMosaique();
+        vueListe = new VueListe();
+        gameGrid = new GameGrid(vueMosaique);
+        vueActuelle = gameGrid.getVue();
+    }
 
     public JeuController openGameDetails(MouseEvent event) {
         try {

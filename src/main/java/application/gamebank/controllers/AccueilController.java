@@ -42,8 +42,14 @@ public class AccueilController extends gameViewer {
     private Stage researchStage;
     private MyGames gamesSave;
     private Tri triSelectioner;
-    private MyTags tags = new MyTags(); // Enregistre tout les tags dans un même objet
-    private final Persistence persistence = new PersistenceBySerialization(games, tags);
+    private MyTags tags;
+    private final Persistence persistence;
+
+    public AccueilController(){
+        super();
+        tags = new MyTags();
+        persistence = new PersistenceBySerialization(games, tags);
+    }
 
     @FXML
     public void initialize() {

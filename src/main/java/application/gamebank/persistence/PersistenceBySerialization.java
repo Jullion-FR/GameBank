@@ -7,8 +7,8 @@ import java.io.*;
 
 public class PersistenceBySerialization implements Persistence {
 
-    private static final String FILE_GAMES = "gameBankSaveGames.sv";
-    private static final String FILE_TAGS = "gameBankSaveTags.sv";
+    private static final String FILE_GAMES = "saveGames";
+    private static final String FILE_TAGS = "saveTags";
 
 
     private MyGames games;
@@ -28,11 +28,12 @@ public class PersistenceBySerialization implements Persistence {
 
     private void saveGames() {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILE_GAMES))) {
-            objectOutputStream.writeObject(games);
+            objectOutputStream.writeObject(games); //<- erreur
             objectOutputStream.flush();
             System.out.println("SAVE OK for games");
         } catch (IOException e) {
             System.err.println("Saving file error for games");
+            e.printStackTrace();
         }
     }
 
@@ -43,6 +44,7 @@ public class PersistenceBySerialization implements Persistence {
             System.out.println("SAVE OK for tags");
         } catch (IOException e) {
             System.err.println("Saving file error for tags");
+            e.printStackTrace();
         }
     }
 
@@ -82,7 +84,8 @@ public class PersistenceBySerialization implements Persistence {
             games = new MyGames();
         } catch (ClassNotFoundException e) {
             System.err.println("Loading save file error for games");
-            System.exit(-1);
+            e.printStackTrace();
+            //System.exit(-1);
         }
         return games;
     }
