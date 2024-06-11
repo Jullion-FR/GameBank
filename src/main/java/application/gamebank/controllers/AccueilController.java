@@ -165,8 +165,11 @@ public class AccueilController extends gameViewer {
 
             stage.showAndWait();
             Tag tag = new Tag(((NouveauTagController) root.getController()).getTagName());
-            tags.addTag(tag);
-
+            if(!tags.getAllTags().contains(tag)) {
+                tags.addTag(tag);
+            } else {
+                System.err.println("Tag déjà présent");
+            }
         } catch (IOException e) {
             System.err.println("Une erreur est survenue");
         }

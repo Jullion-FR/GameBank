@@ -91,7 +91,6 @@ public class Tag implements Comparable<Tag>, Serializable {
     @Override
     public boolean equals(Object tag) {
         if (!(tag instanceof Tag)) return false;
-        if (((Tag) tag).nom.equals(this.nom)) return true;
-        return false;
+        return ((Tag) tag).nom.equals(this.nom);
     }
 }
