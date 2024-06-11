@@ -28,7 +28,7 @@ public class PersistenceBySerialization implements Persistence {
 
     private void saveGames() {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILE_GAMES))) {
-            objectOutputStream.writeObject(games); //<- erreur
+            objectOutputStream.writeObject(games);
             objectOutputStream.flush();
             System.out.println("SAVE OK for games");
         } catch (IOException e) {

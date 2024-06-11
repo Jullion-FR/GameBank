@@ -19,4 +19,5 @@ module application.gamebank {
     exports application.gamebank.games;
     exports application.gamebank.vue;
     exports application.gamebank.tri;
+    exports application.gamebank.tags;
 }

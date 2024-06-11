@@ -57,18 +57,8 @@ public class JeuController {
 
     @FXML
     void initialize() {
-        all_tags = null;
         addTagPane.setDisable(false);
-        activateDropTagPane(); // Active la suppresion de tag
-    }
-
-    /**
-     * réccupere tout les tags existant depuis la fenêtre précedante
-     */
-    public void setAll_tags(MyTags tags) {
-        all_tags = tags;
-
-        updateTagSection();
+        this.all_tags = Main.accueilController.getTags();
     }
 
     /**
@@ -108,14 +98,20 @@ public class JeuController {
                     System.out.println("Tag remove succesfully : " + game.getAllTags());
                 }
             }
-            // TODO suppresion du tag
             dropTagPane.setId("Off");
+            if (game.getAllTags().isEmpty()) {
+                deactivateDropTagPane();
+            }
             updateTagSection();
         }
     }
 
     public void chargerJeu(Game gameToLoad) {
         this.game = gameToLoad;
+        if(!this.game.getAllTags().isEmpty()) {
+            activateDropTagPane();
+        }
+        updateTagSection();
         System.out.println("Chargement de : " + game);
         nom.setText(game.getName());
         image.setImage(game.getImage());
@@ -143,12 +139,13 @@ public class JeuController {
             stage.setTitle("Game Bank - Ajouter un Tag");
             stage.initModality(Modality.WINDOW_MODAL);
             AddTagController controller = root.getController();
-            controller.setAll_tags(all_tags);
 
             stage.showAndWait();
             game.addTag(controller.getResult());
 
+            activateDropTagPane();
             updateTagSection();
+
 
         } catch (IOException e) {
             System.err.println("Une erreur est survenue");
@@ -181,7 +178,6 @@ public class JeuController {
     void removeTagFromGame(MouseEvent event) {
         dropTagPane.setId("On");
         System.out.println("TagRemover - ON");
-
     }
 
     void activateAddGamePane() {
@@ -205,20 +201,20 @@ public class JeuController {
     }
 
     // Utilité des méthodes de deactivation à voir (ils commencent déjà desactivé)
-    void desactivateAddGamePane() {
+    void deactivateAddGamePane() {
         addGamePane.setDisable(true);
     }
 
-    void desactivateAddTagPane() {
+    void deactivateAddTagPane() {
         addTagPane.setDisable(true);
         addTagPane.setOpacity(0.5);
     }
 
-    void desactivateDropGamePane() {
+    void deactivateDropGamePane() {
         dropGamePane.setDisable(true);
     }
 
-    void desactivateDropTagPane() {
+    void deactivateDropTagPane() {
         dropTagPane.setDisable(true);
         dropTagPane.setOpacity(0.5);
     }

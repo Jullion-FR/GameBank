@@ -5,6 +5,7 @@ import application.gamebank.games.Game;
 import application.gamebank.games.MyGames;
 import application.gamebank.persistence.Persistence;
 import application.gamebank.persistence.PersistenceBySerialization;
+import application.gamebank.tags.MyTags;
 import application.gamebank.tags.Tag;
 import application.gamebank.tri.Tri;
 import application.gamebank.tri.TriParDate;
@@ -113,16 +114,6 @@ public class AccueilController extends gameViewer {
         researchStage.close();
     }
 
-    @Override
-    public JeuController openGameDetails(MouseEvent event) {
-        JeuController control = super.openGameDetails(event);
-        control.activateDropGamePane();
-        control.activateAddTagPane();
-        //if(games.getAllGames().get(Integer.parseInt(((Node) event.getSource()).getId())))
-        //todo voir si le jeu a au moins un tag
-        control.activateDropTagPane();
-        return control;
-    }
 
     @FXML
     void startResearch(MouseEvent event) {
@@ -203,5 +194,9 @@ public class AccueilController extends gameViewer {
         }
 
         System.out.println(tags);
+    }
+
+    public MyTags getTags() {
+        return tags;
     }
 }

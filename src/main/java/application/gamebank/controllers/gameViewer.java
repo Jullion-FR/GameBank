@@ -48,11 +48,14 @@ public abstract class gameViewer {
 
             JeuController control = loader.getController();
 
-
-
             control.chargerJeu(game);
-            control.setAll_tags(tags);
 
+            if (Main.accueilController.getGames().getAllGames().contains(control.getGame())) {
+                control.activateAddTagPane();
+                control.activateDropGamePane();
+            } else {
+                control.activateAddGamePane();
+            }
             if (this instanceof AccueilController) {
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);
@@ -61,13 +64,12 @@ public abstract class gameViewer {
                 stage.setScene(scene);
                 stage.setResizable(false);
 
-                control.activateDropGamePane();
-
                 stage.showAndWait();
             } else {
                 control.setLastScene(thisScene);
                 ((Stage) source.getScene().getWindow()).setScene(scene);
             }
+
 
             return control;
         } catch (Exception e) {

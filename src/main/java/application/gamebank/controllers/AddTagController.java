@@ -8,6 +8,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import application.gamebank.Main;
 
 public class AddTagController {
 
@@ -15,28 +16,23 @@ public class AddTagController {
     private Pane bouton_de_validation;
 
     @FXML
-    private ChoiceBox<Tag> liste_tags;
+    private ChoiceBox<Tag> tagChoiceBox;
 
-    private MyTags all_tags;
     private Tag result;
 
     @FXML
     void initialize() {
-        all_tags = new MyTags();
-    }
-
-    public void setAll_tags(MyTags all_tags) {
-        this.all_tags = all_tags;
-
+        MyTags all_tags = Main.accueilController.getTags();
         for (Tag tag : all_tags.getAllTags()) {
-            liste_tags.getItems().add(tag);
+            tagChoiceBox.getItems().add(tag);
         }
-
     }
+
+
 
     @FXML
     void boutonValiderAddTag(MouseEvent event) {
-        result = liste_tags.getValue();
+        result = tagChoiceBox.getValue();
         quit(((Pane) event.getSource()).getScene());
     }
 

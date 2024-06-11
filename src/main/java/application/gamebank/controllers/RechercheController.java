@@ -80,16 +80,6 @@ public class RechercheController extends gameViewer {
         }
     }
 
-    @Override
-    public JeuController openGameDetails(MouseEvent event) {
-        JeuController control = super.openGameDetails(event);
-        if (Main.accueilController.games.getAllGames().contains(control.getGame())) {
-            control.activateDropGamePane();
-        } else {
-            control.activateAddGamePane();
-        }
-        return control;
-    }
 
     @FXML
     void closeWindow(MouseEvent event) {

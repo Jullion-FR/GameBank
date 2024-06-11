@@ -1,5 +1,7 @@
 package application.gamebank.games;
 
+import application.gamebank.tags.MyTags;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
