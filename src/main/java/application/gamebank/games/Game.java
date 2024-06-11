@@ -1,20 +1,24 @@
 package application.gamebank.games;
 
 import application.gamebank.Main;
+import application.gamebank.tags.Tag;
 import javafx.scene.image.Image;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 public class Game implements Comparable<Game>, Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     private final String name;
-    private transient Image image; // tansient -> pas enregistré
     private final String imageURL;
     private final double rating;
     private final String releaseDate;
+    private transient Image image; // tansient -> pas enregistré
+    private final List<Tag> tags;
 
     public Game(String name, String imageURL, double rating, String releaseDate) {
         this.name = name;
@@ -25,16 +29,27 @@ public class Game implements Comparable<Game>, Serializable {
 
         this.rating = rating;
         this.releaseDate = releaseDate;
+        this.tags = new LinkedList<>();
         setImage(imageURL);
     }
 
-    private void setImage(String imageURL) {
-        try {
-            this.image = new Image(imageURL);
-        } catch (Exception e) {
-            this.image = new Image(String.valueOf(Main.class.getResource("images/mosaique.png")));
-        }
+    // ===== TEST ===== //
+
+    public void addTag(Tag tag) {
+        tags.add(tag);
     }
+
+    public void delTag(Tag tag) {
+        System.out.println(tags);
+        tags.remove(tag);
+        System.out.println(tags);
+    }
+
+    public List<Tag> getAllTags() {
+        return tags;
+    }
+
+    // ===== END-TEST ===== //
 
     public String getName() {
         return name;
@@ -45,6 +60,14 @@ public class Game implements Comparable<Game>, Serializable {
             setImage(imageURL); // Recreate the image if it was not serialized
         }
         return image;
+    }
+
+    private void setImage(String imageURL) {
+        try {
+            this.image = new Image(imageURL);
+        } catch (Exception e) {
+            this.image = new Image(String.valueOf(Main.class.getResource("images/mosaique.png")));
+        }
     }
 
     public String getImageURL() {
@@ -74,9 +97,7 @@ public class Game implements Comparable<Game>, Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Game game = (Game) o;
-        return Double.compare(rating, game.rating) == 0 &&
-                Objects.equals(name, game.name) &&
-                Objects.equals(releaseDate, game.releaseDate);
+        return Double.compare(rating, game.rating) == 0 && Objects.equals(name, game.name) && Objects.equals(releaseDate, game.releaseDate);
     }
 
     @Override
