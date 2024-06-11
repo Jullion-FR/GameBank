@@ -2,6 +2,8 @@ package application.gamebank.controllers;
 
 import application.gamebank.Main;
 import application.gamebank.games.Game;
+import application.gamebank.tags.MyTags;
+import application.gamebank.tags.Tag;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -9,9 +11,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class JeuController {
+
+    private MyTags all_tags;
+
     @FXML
     private AnchorPane addGamePane;
 
@@ -37,9 +45,43 @@ public class JeuController {
     private Label noteLabel;
 
     @FXML
+    private VBox tagSection;
+
+    @FXML
     private Label dateSortieLabel;
     private Game game;
     private Scene lastScene;
+
+    @FXML
+    void initialize() {
+        all_tags = null;
+        addTagPane.setDisable(false);
+    }
+
+    /** réccupere tout les tags existant depuis la fenêtre précedante */
+    public void setAll_tags(MyTags tags) {
+        all_tags = tags;
+
+        updateTagSection();
+    }
+
+    /** Met à jour la section affichant les tags du jeux */
+    private void updateTagSection() {
+        // Suppresion des fils du conteneur
+        tagSection.getChildren().clear();
+
+        // Recalcule de la hauteur du conteneur
+        int n = game.getAllTags().size(); // Nombre de tag
+        double s  = tagSection.getSpacing(); // Espace entre deux tag
+        double x = Tag.HEIGHT; // Taille des tags
+
+        tagSection.setPrefHeight(n*x + (n-1)*s);
+
+        // Ajout des tag dans le conteneur
+        for (Tag t : all_tags.getAllTags()) {
+            tagSection.getChildren().add(t.createTagPane());
+        }
+    }
 
     public void chargerJeu(Game gameToLoad) {
         this.game = gameToLoad;
@@ -63,7 +105,7 @@ public class JeuController {
 
     @FXML
     void addTagToGame(MouseEvent event) {
-
+        System.out.println("clique ?");
     }
 
     @FXML

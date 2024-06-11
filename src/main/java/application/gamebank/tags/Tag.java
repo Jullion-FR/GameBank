@@ -1,6 +1,7 @@
 package application.gamebank.tags;
 
 import application.gamebank.Main;
+import application.gamebank.games.Game;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -9,15 +10,31 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Tag implements Comparable<Tag>, Serializable {
 
     public static final double HEIGHT = 32.0;
 
     private String nom;
+    private List<Game> games;
 
     public Tag(String nom) {
         this.nom = nom;
+        this.games = new LinkedList<>();
+    }
+
+    public void addGame(Game game) {
+        games.add(game);
+    }
+
+    public void delGame(Game game) {
+        games.remove(game);
+    }
+
+    public List<Game> getAllGames() {
+        return games;
     }
 
     public AnchorPane createTagPane() {

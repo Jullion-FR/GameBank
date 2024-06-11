@@ -27,10 +27,11 @@ public class MyTags implements Serializable {
 
     @Override
     public String toString() {
+        String txt = "";
         for (Tag t : tags) {
-
+            txt += t.toString() + ", ";
         }
-        return "";
+        return txt;
     }
 
 }

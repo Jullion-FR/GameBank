@@ -1,10 +1,13 @@
 package application.gamebank.games;
 
 import application.gamebank.Main;
+import application.gamebank.tags.Tag;
 import javafx.scene.image.Image;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 public class Game implements Comparable<Game>, Serializable {
@@ -15,14 +18,32 @@ public class Game implements Comparable<Game>, Serializable {
     private final String imageURL;
     private final double rating;
     private final String releaseDate;
+    private List<Tag> tags;
 
     public Game(String name, String imageURL, double rating, String releaseDate) {
         this.name = name;
         this.imageURL = imageURL;
         this.rating = rating;
         this.releaseDate = releaseDate;
+        this.tags = new LinkedList<>();
         setImage(imageURL);
     }
+
+    // ===== TEST ===== //
+
+    public void addTag(Tag tag) {
+        tags.add(tag);
+    }
+
+    public void delTag(Tag tag) {
+        tags.remove(tag);
+    }
+
+    public List<Tag> getAllTags() {
+        return tags;
+    }
+
+    // ===== END-TEST ===== //
 
     private void setImage(String imageURL) {
         try {

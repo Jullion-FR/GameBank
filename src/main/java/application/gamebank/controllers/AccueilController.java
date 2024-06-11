@@ -5,7 +5,6 @@ import application.gamebank.games.Game;
 import application.gamebank.games.MyGames;
 import application.gamebank.persistence.Persistence;
 import application.gamebank.persistence.PersistenceBySerialization;
-import application.gamebank.tags.MyTags;
 import application.gamebank.tags.Tag;
 import application.gamebank.tri.Tri;
 import application.gamebank.tri.TriParDate;
@@ -42,12 +41,10 @@ public class AccueilController extends gameViewer {
     private Stage researchStage;
     private MyGames gamesSave;
     private Tri triSelectioner;
-    private MyTags tags;
     private final Persistence persistence;
 
     public AccueilController(){
         super();
-        tags = new MyTags();
         persistence = new PersistenceBySerialization(games, tags);
     }
 
@@ -187,7 +184,6 @@ public class AccueilController extends gameViewer {
 
     /** Actualise l'affichage des tags dans la page d'accueil */
     private void updateTags() {
-
         // Suppresion des fils du conteneur
         tagConteneur.getChildren().clear();
 
@@ -205,8 +201,6 @@ public class AccueilController extends gameViewer {
             tagConteneur.getChildren().add(t.createTagPane());
         }
 
-
-        // TODO heu je suis perdu pour ça, au secours Julien
         System.out.println(tags);
     }
 }

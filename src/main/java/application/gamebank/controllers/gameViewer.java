@@ -3,6 +3,7 @@ package application.gamebank.controllers;
 import application.gamebank.Main;
 import application.gamebank.games.Game;
 import application.gamebank.games.MyGames;
+import application.gamebank.tags.MyTags;
 import application.gamebank.vue.GameGrid;
 import application.gamebank.vue.Vue;
 import application.gamebank.vue.VueListe;
@@ -22,6 +23,7 @@ public abstract class gameViewer {
     @FXML
     protected ScrollPane scrollPane;
     protected MyGames games;
+    protected MyTags tags;
     protected Vue vueMosaique;
     protected Vue vueListe;
     protected GameGrid gameGrid;
@@ -30,6 +32,7 @@ public abstract class gameViewer {
 
     public gameViewer(){
         games = new MyGames();
+        tags = new MyTags();
         vueMosaique = new VueMosaique();
         vueListe = new VueListe();
         gameGrid = new GameGrid(vueMosaique);
@@ -44,7 +47,11 @@ public abstract class gameViewer {
             Game game = games.getAllGames().get(Integer.parseInt((source).getId()));
 
             JeuController control = loader.getController();
+
+
+
             control.chargerJeu(game);
+            control.setAll_tags(tags);
 
             if (this instanceof AccueilController) {
                 Stage stage = new Stage();
