@@ -1,6 +1,8 @@
 package application.gamebank.controllers;
 
 import application.gamebank.Main;
+import application.gamebank.games.Game;
+import application.gamebank.games.MyGames;
 import application.gamebank.persistence.Persistence;
 import application.gamebank.persistence.PersistenceBySerialization;
 import application.gamebank.tags.MyTags;
@@ -9,6 +11,7 @@ import application.gamebank.tri.Tri;
 import application.gamebank.tri.TriParDate;
 import application.gamebank.tri.TriParNom;
 import application.gamebank.tri.TriParNotes;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -37,7 +40,7 @@ public class AccueilController extends gameViewer {
     private ChoiceBox<String> triChoiceBox;
 
     private Stage researchStage;
-
+    private MyGames gamesSave;
     private Tri triSelectioner;
     private MyTags tags = new MyTags(); // Enregistre tout les tags dans un même objet
     private final Persistence persistence = new PersistenceBySerialization(games, tags);
@@ -57,8 +60,31 @@ public class AccueilController extends gameViewer {
     }
 
     @FXML
-    void filterGames(MouseEvent event) {
+    void filterGames(ActionEvent event) {
+        String filterText = gameFilterTextField.getText().toLowerCase();
 
+        if (filterText.isBlank() && gamesSave != null) {
+            // Restaurer l'état initial des jeux
+            games = gamesSave;
+            fillView();
+        } else {
+            // Sauvegarder l'état initial des jeux seulement si gamesSave est null
+            if (gamesSave == null) {
+                gamesSave = new MyGames();
+                for (Game game : games.getAllGames()) {
+                    gamesSave.addGame(game);
+                }
+            }
+            MyGames filteredGames = new MyGames();
+            for (Game game : games.getAllGames()) {
+                if (game.getName().toLowerCase().contains(filterText)) {
+                    filteredGames.addGame(game);
+                }
+            }
+
+            games = filteredGames;
+            fillView();
+        }
     }
 
     private void initChoiceBox() {
