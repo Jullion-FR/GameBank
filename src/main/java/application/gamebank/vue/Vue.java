@@ -1,8 +1,11 @@
 package application.gamebank.vue;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 public abstract class Vue {
     protected GridElement gridElement;
@@ -25,6 +28,7 @@ public abstract class Vue {
     abstract void formatGameImageView(ImageView imageView);
     abstract void formatRoot(Pane root) ;
     abstract void formatNameLabel(Label nameLabel);
+    abstract void formatOtherInfo(Text infoText);
 
     protected int maxViewWidth = 875;
 

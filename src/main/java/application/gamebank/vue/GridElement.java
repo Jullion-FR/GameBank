@@ -4,16 +4,18 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class GridElement {
     private final Pane root;
     private ImageView gameImageHolder;
     private Label nameHolder;
     private Label gameRating;
-    private TextArea otherInformations;
+    private Text otherInformations;
 
     public GridElement(Pane element) {
         this.root = element;
@@ -52,11 +54,8 @@ public class GridElement {
             } else if (node.equals(this.nameHolder)) {
                 Label clonedNameHolder = new Label(this.nameHolder.getText());
                 clonedElement.addNameHolder(clonedNameHolder);
-            } else if (node.equals(this.gameRating)) {
-                Label clonedGameRating = new Label(this.gameRating.getText());
-                clonedElement.addGameRating(clonedGameRating);
             } else if (node.equals(this.otherInformations)) {
-                TextArea clonedOtherInformations = new TextArea(this.otherInformations.getText());
+                Text clonedOtherInformations = new Text(this.otherInformations.getText());
                 clonedElement.addOtherInformations(clonedOtherInformations);
             } else {
                 // Noeuds basiques
@@ -93,7 +92,7 @@ public class GridElement {
         return gameRating;
     }
 
-    public TextArea getOtherInformations() {
+    public Text getOtherInformations() {
         return otherInformations;
     }
 
@@ -120,7 +119,7 @@ public class GridElement {
         }
     }
 
-    public void addOtherInformations(TextArea otherInformations) {
+    public void addOtherInformations(Text otherInformations) {
         if (this.otherInformations == null) {
             this.otherInformations = otherInformations;
             add(otherInformations);

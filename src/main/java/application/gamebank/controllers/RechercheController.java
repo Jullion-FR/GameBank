@@ -68,11 +68,6 @@ public class RechercheController extends gameViewer {
 
         setCursorLoading(true);
 
-        searchTask.messageProperty().addListener((obs, oldMessage, newMessage) -> {
-            if (newMessage.equals("Aucun résultat")) {
-                scrollPane.setContent(new Label(newMessage));
-            }
-        });
         new Thread(searchTask).start();
     }
 

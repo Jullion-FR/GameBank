@@ -1,22 +1,20 @@
 package application.gamebank.vue;
 
 import application.gamebank.Main;
-import application.gamebank.controllers.JeuController;
 import application.gamebank.games.Game;
 import application.gamebank.games.MyGames;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.scene.text.Text;
+
+import javax.swing.plaf.synth.Region;
 
 public class GameGrid {
     private Vue vue;
@@ -71,12 +69,21 @@ public class GameGrid {
             ImageView imageHolder = element.getGameImageHolder();
             imageHolder.setImage(img);
 
-
+            //Root
             Pane box = element.getRoot();
             box.setId(String.valueOf(k));
 
+            //Other
+            try {
+                Text otherInformations = (Text) element.getOtherInformations();
+                otherInformations.setText(game.getRating()+" / 5\n\n\n"+game.getReleaseDate());
+                vue.formatOtherInfo(otherInformations);
+            }catch (Exception ignored) {}
+
+
             //Format
             vue.formatAll(box, imageHolder, nameHolder);
+
 
             grid.add(box, i, j);
 

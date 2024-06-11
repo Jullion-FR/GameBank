@@ -3,11 +3,14 @@ package application.gamebank.vue;
 import application.gamebank.Main;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 import java.util.HexFormat;
 
@@ -44,6 +47,11 @@ public class VueMosaique extends Vue{
     void formatNameLabel(Label nameLabel) {
         nameLabel.setMaxWidth(maxSize);
         nameLabel.setStyle("-fx-alignment: center; -fx-text-overrun: ellipsis; -fx-text-fill:white;");
+    }
+
+    @Override
+    void formatOtherInfo(Text infoText) {
+
     }
 
 }
