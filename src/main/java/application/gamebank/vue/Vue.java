@@ -28,7 +28,6 @@ public abstract class Vue {
     abstract void formatGameImageView(ImageView imageView);
     abstract void formatRoot(Pane root) ;
     abstract void formatNameLabel(Label nameLabel);
-    abstract void formatOtherInfo(Text infoText);
 
     protected int maxViewWidth = 875;
 

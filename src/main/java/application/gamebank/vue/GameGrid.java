@@ -12,8 +12,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
+import javax.swing.*;
 import javax.swing.plaf.synth.Region;
 
 public class GameGrid {
@@ -50,6 +53,7 @@ public class GameGrid {
 
         int i = 0, j = 0, k = 0;
         for (Game game : games.getAllGames()) {
+
             GridElement element = vue.getGridElement().clone();
 
             String name = game.getName();
@@ -73,12 +77,22 @@ public class GameGrid {
             Pane box = element.getRoot();
             box.setId(String.valueOf(k));
 
-            //Other
-            try {
-                Text otherInformations = (Text) element.getOtherInformations();
-                otherInformations.setText(game.getRating()+" / 5\n\n\n"+game.getReleaseDate());
-                vue.formatOtherInfo(otherInformations);
-            }catch (Exception ignored) {}
+            // has other info?
+            if (element.hasOtherInfo()) {
+                VBox mBox = new VBox();
+                Label note = new Label(String.format("%-" + 8 + "s", game.getRating()+" / 5"));
+                Label date = new Label(game.getReleaseDate());
+
+                VBox.setMargin(note, new Insets(0, 0, 0, 10));
+                VBox.setMargin(date, new Insets(0, 0, 0, 10));
+
+                labelFormat(note);
+                labelFormat(date);
+
+                mBox.setAlignment(Pos.CENTER_LEFT);
+                mBox.getChildren().addAll(nameHolder,note, date);
+                element.getRoot().getChildren().add(mBox);
+            }
 
 
             //Format
@@ -98,5 +112,11 @@ public class GameGrid {
 
     public Vue getVue() {
         return vue;
+    }
+
+    private void labelFormat(Label label) {
+        label.setTextFill(Color.WHITE);
+        label.setStyle("-fx-font-size: 20px;");
+        label.setTextAlignment(TextAlignment.LEFT);
     }
 }

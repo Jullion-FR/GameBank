@@ -49,9 +49,5 @@ public class VueMosaique extends Vue{
         nameLabel.setStyle("-fx-alignment: center; -fx-text-overrun: ellipsis; -fx-text-fill:white;");
     }
 
-    @Override
-    void formatOtherInfo(Text infoText) {
-
-    }
 
 }

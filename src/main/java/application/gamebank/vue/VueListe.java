@@ -23,15 +23,12 @@ public class VueListe extends Vue {
         maxGridLength = DEFAULT_MAX_GRID_LENGTH;
         ImageView img = new ImageView(String.valueOf(Main.class.getResource("images/mosaique.png")));
         Label name = new Label("GamePlaceHolder");
-        Text otherInformations = new Text();
-        Label holder = new Label("");
 
         gridElement = new GridElement(new HBox());
 
         gridElement.addGameImageHolder(img);
         gridElement.addNameHolder(name);
-        gridElement.add(holder);
-        gridElement.addOtherInformations(otherInformations);
+        gridElement.setHasOtherInfo(true);
     }
 
     @Override
@@ -50,30 +47,10 @@ public class VueListe extends Vue {
 
     @Override
     void formatNameLabel(Label nameLabel) {
-
-        nameLabel.setPadding(new Insets(0, 10, 0, 10));
-        nameLabel.setStyle("-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;");
-
-        String formattedText = formatText(nameLabel.getText(), 75);
-        nameLabel.setText(formattedText);
+        nameLabel.setPadding(new Insets(0, 0, 5, 10));
+        nameLabel.setStyle("-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold");
     }
 
-    @Override
-    void formatOtherInfo(Text infoText) {
-        infoText.setFill(Color.WHITE);
-        infoText.setStyle("-fx-font-size: 20px;");
-        infoText.setTextAlignment(TextAlignment.LEFT);
-    }
 
-    private String formatText(String text, int maxLength) {
-        if (text.length() > maxLength) {
-            return text.substring(0, maxLength - 3) + "...";
-        } else {
-            StringBuilder sb = new StringBuilder(text);
-            while (sb.length() < maxLength) {
-                sb.append(" ");
-            }
-            return sb.toString();
-        }
-    }
+
 }

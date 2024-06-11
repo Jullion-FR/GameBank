@@ -186,41 +186,41 @@ public class JeuController {
 
     void activateAddGamePane() {
         addGamePane.setDisable(false);
-        addGamePane.setOpacity(1);
     }
 
     void activateAddTagPane() {
         addTagPane.setDisable(false);
+        addTagPane.setOpacity(1);
     }
 
     void activateDropGamePane() {
         dropGamePane.setDisable(false);
-        dropGamePane.setOpacity(1);
     }
 
     void activateDropTagPane() {
         dropTagPane.setId("Off");
         System.out.println("TagRemover - OFF");
         dropTagPane.setDisable(false);
+        dropTagPane.setOpacity(1);
     }
 
     // Utilité des méthodes de deactivation à voir (ils commencent déjà desactivé)
     void desactivateAddGamePane() {
         addGamePane.setDisable(true);
-        addGamePane.setOpacity(0.5);
     }
 
     void desactivateAddTagPane() {
         addTagPane.setDisable(true);
+        addTagPane.setOpacity(0.5);
     }
 
     void desactivateDropGamePane() {
         dropGamePane.setDisable(true);
-        dropGamePane.setOpacity(0.5);
     }
 
     void desactivateDropTagPane() {
         dropTagPane.setDisable(true);
+        dropTagPane.setOpacity(0.5);
     }
 
     public Scene getScene() {

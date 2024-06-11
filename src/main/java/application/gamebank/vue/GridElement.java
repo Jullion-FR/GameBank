@@ -16,9 +16,11 @@ public class GridElement {
     private Label nameHolder;
     private Label gameRating;
     private Text otherInformations;
+    private boolean hasOtherInfo;
 
     public GridElement(Pane element) {
         this.root = element;
+        hasOtherInfo = false;
     }
 
     public Pane getRoot() {
@@ -45,6 +47,7 @@ public class GridElement {
         }
 
         GridElement clonedElement = new GridElement(newPane);
+        clonedElement.setHasOtherInfo(this.hasOtherInfo);
         // Cloner tous les enfants
         for (Node node : this.root.getChildren()) {
             // Noeuds spéciaux
@@ -126,5 +129,13 @@ public class GridElement {
         } else {
             throw new UnsupportedOperationException("Special Item already initialized");
         }
+    }
+
+    public void setHasOtherInfo(boolean b) {
+        hasOtherInfo = b;
+    }
+
+    public boolean hasOtherInfo() {
+        return hasOtherInfo;
     }
 }
