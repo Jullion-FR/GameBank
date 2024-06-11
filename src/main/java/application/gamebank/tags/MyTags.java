@@ -44,4 +44,8 @@ public class MyTags implements Serializable {
         return null;
     }
 
+    public void delTag(Tag tag) {
+        tags.remove(tag);
+    }
+
 }

@@ -15,15 +15,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class AccueilController extends gameViewer {
@@ -33,6 +35,8 @@ public class AccueilController extends gameViewer {
 
     @FXML
     private VBox tagConteneur;
+
+    private ContextMenu contextMenu;
 
     @FXML
     private TextField gameFilterTextField;
@@ -44,6 +48,7 @@ public class AccueilController extends gameViewer {
     private MyGames gamesSave;
     private Tri triSelectioner;
     private final Persistence persistence;
+    private Tag tagSelect;
 
     public AccueilController(){
         super();
@@ -61,6 +66,26 @@ public class AccueilController extends gameViewer {
         addEndEvent();
         initChoiceBox();
         fillView();
+        updateTags();
+        buildContextMenuForTag();
+    }
+
+    private void buildContextMenuForTag() {
+        // Créer un menu contextuel
+        contextMenu = new ContextMenu();
+
+        // Créer des éléments de menu
+        MenuItem menuItem1 = new MenuItem("Suprrimer");
+
+        // Ajouter des actions aux éléments de menu
+        menuItem1.setOnAction(this::delTag);
+
+        // Ajouter les éléments de menu au menu contextuel
+        contextMenu.getItems().addAll(menuItem1);
+    }
+
+    void delTag(ActionEvent event) {
+        tags.delTag(tagSelect);
         updateTags();
     }
 
@@ -188,15 +213,33 @@ public class AccueilController extends gameViewer {
         double s  = tagConteneur.getSpacing(); // Espace entre deux tag
         double x = Tag.HEIGHT; // Taille des tags
 
-
         tagConteneur.setPrefHeight(n*x + (n-1)*s);
 
         // Ajout des tag dans le conteneur
         for (Tag t : tags.getAllTags()) {
-            tagConteneur.getChildren().add(t.createTagPane());
+            AnchorPane pane = t.createTagPane();
+
+            pane.setOnMouseClicked(this::onTagCliked);
+            tagConteneur.getChildren().add(pane);
+        }
+    }
+
+    void onTagCliked(MouseEvent event) {
+
+        // Définie le tag selectionner
+        for (Node n : ((AnchorPane) event.getSource()).getChildren()) {
+            if (n instanceof Label) {
+                tagSelect = tags.getTagByName(((Label) n).getText());
+            }
         }
 
-        System.out.println(tags);
+        if (event.getButton() == MouseButton.SECONDARY) {
+            contextMenu.show(root, event.getScreenX(), event.getScreenY());
+        } else if (event.getButton() == MouseButton.PRIMARY) {
+            // TODO affiche les jeux ayant ce tag
+        } else {
+            contextMenu.hide();
+        }
     }
 
     public MyTags getTags() {
