@@ -13,6 +13,7 @@ import javafx.scene.text.Font;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class Tag implements Comparable<Tag>, Serializable {
 
@@ -85,5 +86,12 @@ public class Tag implements Comparable<Tag>, Serializable {
 
     public String toString() {
         return nom;
+    }
+
+    @Override
+    public boolean equals(Object tag) {
+        if (!(tag instanceof Tag)) return false;
+        if (((Tag) tag).nom.equals(this.nom)) return true;
+        return false;
     }
 }

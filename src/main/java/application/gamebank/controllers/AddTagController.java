@@ -2,14 +2,10 @@ package application.gamebank.controllers;
 
 import application.gamebank.tags.MyTags;
 import application.gamebank.tags.Tag;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -48,7 +44,9 @@ public class AddTagController {
         return result;
     }
 
-    /** Ferme la fenêtre */
+    /**
+     * Ferme la fenêtre
+     */
     private void quit(Scene scene) {
         ((Stage) scene.getWindow()).close();
     }
