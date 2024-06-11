@@ -33,6 +33,7 @@
                   <VBox fx:id="tagConteneur" prefHeight="652.0" prefWidth="257.0" spacing="5.0" />
                </content>
             </ScrollPane>
+            <Label layoutX="28.0" layoutY="82.0" text="Faites clique-droit pour supprimer un tag" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="276.0" layoutY="-1.0" prefHeight="107.0" prefWidth="868.0" style="-fx-border-color: black;">
